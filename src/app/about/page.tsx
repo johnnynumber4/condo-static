@@ -7,6 +7,7 @@ import Paper from '@mui/material/Paper';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import { Cottage as CottageIcon } from '@mui/icons-material';
+import Image from 'next/image';
 
 export default function About() {
   return (
@@ -23,6 +24,25 @@ export default function About() {
         </Typography>
 
         <Paper sx={{ p: 4, mb: 4 }}>
+          <Box sx={{ 
+            position: 'relative',
+            height: '400px',
+            mb: 4,
+            borderRadius: 2,
+            overflow: 'hidden'
+          }}>
+            <Image
+              src="/sunset-toast.jpg"
+              alt="Sunset toast on the balcony"
+              fill
+              style={{ 
+                objectFit: 'cover',
+                objectPosition: 'center',
+              }}
+              priority
+            />
+          </Box>
+
           <Typography variant="body1" paragraph>
             We are unit 252, but we think that 2+5+2 = PARADISE! This is how:
           </Typography>
