@@ -6,12 +6,21 @@ import { CacheProvider as DefaultCacheProvider } from '@emotion/react';
 
 export type NextAppDirEmotionCacheProviderProps = {
   options?: Parameters<typeof createCache>[0];
-  CacheProvider?: React.ComponentType<{ value: any; children: React.ReactNode }>;
+  CacheProvider?: React.ComponentType<{
+    value: unknown;
+    children: React.ReactNode;
+  }>;
   children: React.ReactNode;
 };
 
-export function NextAppDirEmotionCacheProvider(props: NextAppDirEmotionCacheProviderProps) {
-  const { options = { key: 'css' }, CacheProvider = DefaultCacheProvider, children } = props;
+export function NextAppDirEmotionCacheProvider(
+  props: NextAppDirEmotionCacheProviderProps
+) {
+  const {
+    options = { key: 'css' },
+    CacheProvider = DefaultCacheProvider,
+    children,
+  } = props;
 
   const [registry] = React.useState(() => {
     const cache = createCache(options);
@@ -54,4 +63,4 @@ export function NextAppDirEmotionCacheProvider(props: NextAppDirEmotionCacheProv
   });
 
   return <CacheProvider value={registry.cache}>{children}</CacheProvider>;
-} 
+}

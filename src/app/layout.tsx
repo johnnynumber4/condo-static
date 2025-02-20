@@ -11,11 +11,9 @@ export default function RootLayout({
       <body>
         <ThemeRegistry>
           <Navigation />
-          <main>
-            {children}
-          </main>
+          <main>{children}</main>
         </ThemeRegistry>
       </body>
     </html>
   );
-} 
+}

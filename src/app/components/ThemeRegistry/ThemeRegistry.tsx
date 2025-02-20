@@ -10,7 +10,11 @@ export const ColorModeContext = React.createContext({
 });
 
 // Use state for the current mode ("light" or "dark")
-export default function ThemeRegistry({ children }: { children: React.ReactNode }) {
+export default function ThemeRegistry({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [mode, setMode] = React.useState<'light' | 'dark'>('light');
 
   const colorMode = React.useMemo(
@@ -41,7 +45,7 @@ export default function ThemeRegistry({ children }: { children: React.ReactNode 
           },
           background: {
             // Use your preferred colors or let MUI decide defaults for dark mode
-            default: mode === 'dark' ? '#303030' : '#fafafa', 
+            default: mode === 'dark' ? '#303030' : '#fafafa',
             paper: mode === 'dark' ? '#424242' : '#ffffff',
           },
           text: {
@@ -123,4 +127,4 @@ export default function ThemeRegistry({ children }: { children: React.ReactNode 
       </NextAppDirEmotionCacheProvider>
     </ColorModeContext.Provider>
   );
-} 
+}

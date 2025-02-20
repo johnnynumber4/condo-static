@@ -10,17 +10,23 @@ export default function ImportantInfo() {
   return (
     <Container maxWidth="md">
       <Box sx={{ my: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom sx={{ display: 'flex', alignItems: 'center' }}>
+        <Typography
+          variant="h4"
+          component="h1"
+          gutterBottom
+          sx={{ display: 'flex', alignItems: 'center' }}
+        >
           <InfoIcon sx={{ mr: 2 }} />
           Important Information
         </Typography>
-        
+
         <Paper sx={{ p: 4, mb: 4 }}>
           <Typography variant="h6" gutterBottom>
             Emergency Contacts
           </Typography>
           <Typography variant="body1" paragraph>
-            Coming soon: Emergency numbers, local services, and important contacts.
+            Coming soon: Emergency numbers, local services, and important
+            contacts.
           </Typography>
         </Paper>
 
@@ -35,4 +41,4 @@ export default function ImportantInfo() {
       </Box>
     </Container>
   );
-} 
+}
