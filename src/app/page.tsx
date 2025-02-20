@@ -227,6 +227,34 @@ export default function Home() {
               </Button>
             </Paper>
           </Grid>
+          <Grid item xs={12} sm={6}>
+            <Paper
+              sx={{
+                p: 3,
+                height: '100%',
+                transition: 'transform 0.2s, box-shadow 0.2s',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: 4,
+                },
+              }}
+            >
+              <Typography
+                variant="h5"
+                gutterBottom
+                sx={{ display: 'flex', alignItems: 'center' }}
+              >
+                <InfoIcon sx={{ mr: 1, color: 'primary.main' }} />
+                Groceries
+              </Typography>
+              <Typography variant="body1" paragraph>
+                Grocery stores in the area.
+              </Typography>
+              <Button variant="contained" href="/groceries">
+                View Info
+              </Button>
+            </Paper>
+          </Grid>
         </Grid>
       </Container>
     </>

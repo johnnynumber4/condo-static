@@ -74,7 +74,7 @@ export default function Navigation() {
       ))}
       <ListItem
         component="a"
-        href="https://www.booking.com"
+        href="https://www.hosteeva.com/properties/available/details/12926-hosteeva-oceanfront-sunny-condo-w-pool-in-atlantica-towers-condo"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -88,7 +88,7 @@ export default function Navigation() {
 
   return (
     <>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar>
           {isMobile && (
             <IconButton
@@ -136,7 +136,7 @@ export default function Navigation() {
               ))}
               <Button
                 color="inherit"
-                href="https://www.booking.com"
+                href="https://www.hosteeva.com/properties/available/details/12926-hosteeva-oceanfront-sunny-condo-w-pool-in-atlantica-towers-condo"
                 target="_blank"
                 rel="noopener noreferrer"
                 sx={{ ml: 2 }}
@@ -147,7 +147,7 @@ export default function Navigation() {
           )}
         </Toolbar>
       </AppBar>
-
+      <Toolbar />
       <Drawer
         variant="temporary"
         anchor="left"

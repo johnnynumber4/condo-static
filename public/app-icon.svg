@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Background circle -->
+  <circle cx="256" cy="256" r="256" fill="#1e88e5"/>
+  <!-- Sun -->
+  <circle cx="256" cy="256" r="108" fill="#FFB74D"/>
+  <!-- Rays -->
+  <g stroke="#FFB74D" stroke-width="40" stroke-linecap="round">
+    <line x1="256" y1="64" x2="256" y2="148"/>
+    <line x1="256" y1="364" x2="256" y2="448"/>
+    <line x1="64" y1="256" x2="148" y2="256"/>
+    <line x1="364" y1="256" x2="448" y2="256"/>
+    <line x1="115" y1="115" x2="173" y2="173"/>
+    <line x1="339" y1="339" x2="397" y2="397"/>
+    <line x1="115" y1="397" x2="173" y2="339"/>
+    <line x1="339" y1="173" x2="397" y2="115"/>
+  </g>
+</svg> 
