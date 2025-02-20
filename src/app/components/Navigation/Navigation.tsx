@@ -18,7 +18,7 @@ import {
 import {
   Menu as MenuIcon,
   Home as HomeIcon,
-  Book as BookIcon,
+  // Book as BookIcon,
   LocationOn as LocationIcon,
   Info as InfoIcon,
   CalendarMonth as CalendarIcon,
@@ -33,9 +33,9 @@ import { ColorModeContext } from '../ThemeRegistry/ThemeRegistry';
 
 const navItems = [
   { text: 'Home', href: '/', icon: <HomeIcon /> },
-  { text: 'About', href: '/about', icon: <CottageIcon /> },
+  { text: 'Your Hosts', href: '/about', icon: <CottageIcon /> },
   { text: 'Condo Guide', href: '/guide', icon: <HomeIcon /> },
-  { text: 'Guest Book', href: '/guestbook', icon: <BookIcon /> },
+  // { text: 'Guest Book', href: '/guestbook', icon: <BookIcon /> },
   { text: 'Activities', href: '/activities', icon: <LocationIcon /> },
   { text: 'Groceries', href: '/groceries', icon: <ShoppingCartIcon /> },
   { text: 'Important Info', href: '/info', icon: <InfoIcon /> },
@@ -62,13 +62,20 @@ export default function Navigation() {
           onClick={() => setMobileOpen(false)}
           sx={{
             backgroundColor:
-              pathname === item.href ? 'rgba(0, 0, 0, 0.04)' : 'transparent',
+              pathname === item.href
+                ? theme.palette.mode === 'dark'
+                  ? 'rgba(255, 255, 255, 0.08)'
+                  : 'rgba(0, 0, 0, 0.04)'
+                : 'transparent',
             '&:hover': {
-              backgroundColor: 'rgba(0, 0, 0, 0.08)',
+              backgroundColor:
+                theme.palette.mode === 'dark'
+                  ? 'rgba(255, 255, 255, 0.05)'
+                  : 'rgba(0, 0, 0, 0.08)',
             },
           }}
         >
-          <ListItemIcon>{item.icon}</ListItemIcon>
+          <ListItemIcon sx={{ color: 'inherit' }}>{item.icon}</ListItemIcon>
           <ListItemText primary={item.text} />
         </ListItem>
       ))}
