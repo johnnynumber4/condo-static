@@ -84,9 +84,10 @@ export default function ThemeRegistry({
               '.MuiBox-root': {
                 '&[style*="background"]': {
                   backgroundColor: mode === 'dark' ? '#1e1e1e' : undefined,
-                  backgroundImage: mode === 'dark' 
-                    ? 'linear-gradient(to right bottom, #1e1e1e, #121212)'
-                    : 'linear-gradient(to right bottom, #1e88e5, #1565c0)',
+                  backgroundImage:
+                    mode === 'dark'
+                      ? 'linear-gradient(to right bottom, #1e1e1e, #121212)'
+                      : 'linear-gradient(to right bottom, #1e88e5, #1565c0)',
                 },
               },
             },

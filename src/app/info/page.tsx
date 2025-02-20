@@ -38,8 +38,8 @@ export default function ImportantInfo() {
           </Typography>
           <List sx={{ pl: 2 }}>
             <ListItem sx={{ display: 'list-item' }}>
-              For same day late check-ins, you need to get the host&apos;s approval
-              before booking.
+              For same day late check-ins, you need to get the host&apos;s
+              approval before booking.
             </ListItem>
             <ListItem sx={{ display: 'list-item' }}>
               Grilling is prohibited. Penalty: Any violation of this policy will

@@ -16,16 +16,21 @@ import { useTheme } from '@mui/material';
 
 export default function Home() {
   const theme = useTheme();
-  
+
   return (
     <>
       <Box
         sx={{
-          bgcolor: theme.palette.mode === 'dark' ? 'background.paper' : 'primary.main',
-          backgroundImage: theme.palette.mode === 'dark'
-            ? 'linear-gradient(to right bottom, #1e1e1e, #121212)'
-            : 'linear-gradient(to right bottom, #1e88e5, #1565c0)',
-          color: theme.palette.mode === 'dark' ? 'text.primary' : 'primary.contrastText',
+          bgcolor:
+            theme.palette.mode === 'dark' ? 'background.paper' : 'primary.main',
+          backgroundImage:
+            theme.palette.mode === 'dark'
+              ? 'linear-gradient(to right bottom, #1e1e1e, #121212)'
+              : 'linear-gradient(to right bottom, #1e88e5, #1565c0)',
+          color:
+            theme.palette.mode === 'dark'
+              ? 'text.primary'
+              : 'primary.contrastText',
           py: 10,
           mb: 6,
           position: 'relative',
@@ -36,9 +41,10 @@ export default function Home() {
             left: 0,
             right: 0,
             height: '50px',
-            background: theme.palette.mode === 'dark'
-              ? 'linear-gradient(to right bottom, transparent 49%, #121212 50%)'
-              : 'linear-gradient(to right bottom, transparent 49%, #fafafa 50%)',
+            background:
+              theme.palette.mode === 'dark'
+                ? 'linear-gradient(to right bottom, transparent 49%, #121212 50%)'
+                : 'linear-gradient(to right bottom, transparent 49%, #fafafa 50%)',
           },
         }}
       >
