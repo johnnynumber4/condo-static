@@ -4,8 +4,10 @@
   "description": "Your perfect beachfront getaway in Myrtle Beach",
   "start_url": "/",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#ffffff",
   "theme_color": "#1e88e5",
+  "scope": "/",
   "icons": [
     {
       "src": "/icons/icon-192x192.png",
@@ -17,6 +19,18 @@
       "src": "/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "About",
+      "url": "/about",
+      "description": "Learn about our condo"
+    },
+    {
+      "name": "Book Now",
+      "url": "https://www.hosteeva.com/properties/available/details/12926-hosteeva-oceanfront-sunny-condo-w-pool-in-atlantica-towers-condo",
+      "description": "Book your stay"
     }
   ]
 } 

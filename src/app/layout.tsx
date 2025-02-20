@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import ThemeRegistry from './components/ThemeRegistry/ThemeRegistry';
 import Navigation from './components/Navigation/Navigation';
 import { registerServiceWorker } from './pwa';
+import InstallPWA from './components/InstallPWA';
 
 export default function RootLayout({
   children,
@@ -27,6 +28,7 @@ export default function RootLayout({
           >
             {children}
           </main>
+          <InstallPWA />
         </ThemeRegistry>
       </body>
     </html>
