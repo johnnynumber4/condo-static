@@ -72,13 +72,22 @@ export default function ThemeRegistry({
         components: {
           MuiCssBaseline: {
             styleOverrides: {
-              body: {
+              'html, body': {
                 backgroundColor: mode === 'dark' ? '#121212' : '#fafafa',
-                transition: 'background-color 0.3s',
+                color: mode === 'dark' ? '#ffffff' : '#2c3e50',
+                transition: 'background-color 0.3s, color 0.3s',
               },
-              '#__next': {
-                minHeight: '100vh',
+              main: {
                 backgroundColor: mode === 'dark' ? '#121212' : '#fafafa',
+                color: mode === 'dark' ? '#ffffff' : '#2c3e50',
+              },
+              '.MuiBox-root': {
+                '&[style*="background"]': {
+                  backgroundColor: mode === 'dark' ? '#1e1e1e' : undefined,
+                  backgroundImage: mode === 'dark' 
+                    ? 'linear-gradient(to right bottom, #1e1e1e, #121212)'
+                    : 'linear-gradient(to right bottom, #1e88e5, #1565c0)',
+                },
               },
             },
           },
