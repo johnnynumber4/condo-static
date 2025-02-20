@@ -81,7 +81,8 @@ export default function Navigation() {
           href={item.href}
           onClick={() => setMobileOpen(false)}
           sx={{
-            backgroundColor: pathname === item.href ? 'rgba(0, 0, 0, 0.04)' : 'transparent',
+            backgroundColor:
+              pathname === item.href ? 'rgba(0, 0, 0, 0.04)' : 'transparent',
             '&:hover': {
               backgroundColor: 'rgba(0, 0, 0, 0.08)',
             },
@@ -97,7 +98,9 @@ export default function Navigation() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <ListItemIcon><CalendarIcon /></ListItemIcon>
+        <ListItemIcon>
+          <CalendarIcon />
+        </ListItemIcon>
         <ListItemText primary="Book Now" />
       </ListItem>
     </List>
@@ -105,7 +108,7 @@ export default function Navigation() {
 
   return (
     <>
-      <AppBar 
+      <AppBar
         position="fixed"
         sx={{
           transform: visible ? 'translateY(0)' : 'translateY(-110%)',
@@ -114,7 +117,11 @@ export default function Navigation() {
       >
         <Toolbar>
           {isMobile && (
-            <IconButton color="inherit" edge="start" onClick={handleDrawerToggle}>
+            <IconButton
+              color="inherit"
+              edge="start"
+              onClick={handleDrawerToggle}
+            >
               <MenuIcon />
             </IconButton>
           )}
@@ -125,9 +132,13 @@ export default function Navigation() {
           <Box sx={{ flexGrow: 1 }} />
 
           <IconButton onClick={colorMode.toggleColorMode} color="inherit">
-            {theme.palette.mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
+            {theme.palette.mode === 'dark' ? (
+              <LightModeIcon />
+            ) : (
+              <DarkModeIcon />
+            )}
           </IconButton>
-          
+
           {!isMobile && (
             <Box sx={{ display: 'flex', gap: 2 }}>
               {navItems.map((item) => (
@@ -137,7 +148,10 @@ export default function Navigation() {
                   href={item.href}
                   color="inherit"
                   sx={{
-                    backgroundColor: pathname === item.href ? 'rgba(255, 255, 255, 0.12)' : 'transparent',
+                    backgroundColor:
+                      pathname === item.href
+                        ? 'rgba(255, 255, 255, 0.12)'
+                        : 'transparent',
                     '&:hover': {
                       backgroundColor: 'rgba(255, 255, 255, 0.2)',
                     },
@@ -177,4 +191,4 @@ export default function Navigation() {
       </Drawer>
     </>
   );
-} 
+}
