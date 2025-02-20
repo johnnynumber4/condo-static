@@ -1,95 +1,216 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
+import {
+  Home as HomeIcon,
+  Book as BookIcon,
+  LocationOn as LocationIcon,
+  Info as InfoIcon,
+  BeachAccess as BeachIcon
+} from '@mui/icons-material';
+
+const navItems = [
+  { text: 'About Our Condo', href: '/about', icon: <HomeIcon />, description: 'Learn about our paradise: Unit 252 and what makes it special' },
+  { text: 'Condo Guide', href: '/guide', icon: <HomeIcon />, description: 'Everything you need to know about your stay' },
+  { text: 'Guest Book', href: '/guestbook', icon: <BookIcon />, description: 'Share your experience and read others\' stories' },
+  { text: 'Activities', href: '/activities', icon: <LocationIcon />, description: 'Discover fun things to do in the area' },
+  { text: 'Important Info', href: '/info', icon: <InfoIcon />, description: 'Essential details and helpful resources' },
+];
+
+
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      <Box
+        sx={{
+          bgcolor: 'primary.main',
+          backgroundImage: 'linear-gradient(to right bottom, #1e88e5, #1565c0)',
+          color: 'primary.contrastText',
+          py: 10,
+          mb: 6,
+          position: 'relative',
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: '50px',
+            background: 'linear-gradient(to right bottom, transparent 49%, #fafafa 50%)',
+          },
+        }}
+      >
+        <Container maxWidth="md">
+          <Typography 
+            variant="h2" 
+            component="h1" 
+            gutterBottom 
+            align="center"
+            sx={{ 
+              fontWeight: 'bold',
+              textShadow: '2px 2px 4px rgba(0,0,0,0.2)',
+            }}
+          >
+            <BeachIcon sx={{ fontSize: 45, mr: 2 }} />
+            Welcome to Paradise 252
+          </Typography>
+          <Typography 
+            variant="h5" 
+            align="center" 
+            sx={{ 
+              mb: 4,
+              textShadow: '1px 1px 2px rgba(0,0,0,0.1)',
+              maxWidth: '600px',
+              mx: 'auto',
+            }}
+          >
+            Your perfect beachfront getaway awaits
+          </Typography>
+          <Box sx={{ 
+            display: 'flex', 
+            gap: 2, 
+            justifyContent: 'center',
+            flexWrap: 'wrap'
+          }}>
+            <Button 
+              variant="contained" 
+              size="large"
+              href="/about"
+              sx={{ 
+                bgcolor: 'white', 
+                color: 'primary.main',
+                px: 4,
+                '&:hover': {
+                  bgcolor: 'grey.100',
+                  transform: 'translateY(-2px)',
+                },
+                transition: 'transform 0.2s',
+              }}
+            >
+              About our Condo
+            </Button>
+            <Button 
+              variant="contained" 
+              size="large"
+              href="https://www.booking.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{ 
+                bgcolor: 'secondary.main',
+                color: 'secondary.contrastText',
+                px: 4,
+                '&:hover': {
+                  bgcolor: 'secondary.dark',
+                  transform: 'translateY(-2px)',
+                },
+                transition: 'transform 0.2s',
+              }}
+            >
+              Book Your Stay
+            </Button>
+          </Box>
+        </Container>
+      </Box>
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      <Container maxWidth="md">
+        <Grid container spacing={3}>
+          <Grid item xs={12} sm={6}>
+            <Paper 
+              sx={{ 
+                p: 3, 
+                height: '100%',
+                transition: 'transform 0.2s, box-shadow 0.2s',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: 4
+                }
+              }}
+            >
+              <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center' }}>
+                <HomeIcon sx={{ mr: 1, color: 'primary.main' }} />
+                Condo Guide
+              </Typography>
+              <Typography variant="body1" paragraph>
+                Everything you need to know about your stay - from WiFi passwords to pool access.
+              </Typography>
+              <Button variant="contained" href="/guide">View Guide</Button>
+            </Paper>
+          </Grid>
+
+          <Grid item xs={12} sm={6}>
+            <Paper 
+              sx={{ 
+                p: 3, 
+                height: '100%',
+                transition: 'transform 0.2s, box-shadow 0.2s',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: 4
+                }
+              }}
+            >
+              <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center' }}>
+                <BookIcon sx={{ mr: 1, color: 'primary.main' }} />
+                Guest Book
+              </Typography>
+              <Typography variant="body1" paragraph>
+                Share your experience and read about others' stays.
+              </Typography>
+              <Button variant="contained" href="/guestbook">Open Guest Book</Button>
+            </Paper>
+          </Grid>
+
+          <Grid item xs={12} sm={6}>
+            <Paper 
+              sx={{ 
+                p: 3, 
+                height: '100%',
+                transition: 'transform 0.2s, box-shadow 0.2s',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: 4
+                }
+              }}
+            >
+              <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center' }}>
+                <LocationIcon sx={{ mr: 1, color: 'primary.main' }} />
+                Local Activities
+              </Typography>
+              <Typography variant="body1" paragraph>
+                Discover restaurants, attractions, and activities nearby.
+              </Typography>
+              <Button variant="contained" href="/activities">Explore Area</Button>
+            </Paper>
+          </Grid>
+
+          <Grid item xs={12} sm={6}>
+            <Paper 
+              sx={{ 
+                p: 3, 
+                height: '100%',
+                transition: 'transform 0.2s, box-shadow 0.2s',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: 4
+                }
+              }}
+            >
+              <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center' }}>
+                <InfoIcon sx={{ mr: 1, color: 'primary.main' }} />
+                Important Info
+              </Typography>
+              <Typography variant="body1" paragraph>
+                Emergency contacts, rules, and other essential information.
+              </Typography>
+              <Button variant="contained" href="/info">View Info</Button>
+            </Paper>
+          </Grid>
+        </Grid>
+      </Container>
+    </>
   );
-}
+} 
