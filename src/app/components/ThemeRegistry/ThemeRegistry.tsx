@@ -30,27 +30,26 @@ export default function ThemeRegistry({
     () =>
       createTheme({
         palette: {
-          mode, // dynamically update the mode here
+          mode,
           primary: {
-            main: '#1e88e5', // Ocean blue
+            main: '#1e88e5',
             light: '#4791db',
             dark: '#1565c0',
             contrastText: '#fff',
           },
           secondary: {
-            main: '#ffb74d', // Sandy orange
+            main: '#ffb74d',
             light: '#ffd95b',
             dark: '#f57c00',
             contrastText: '#000',
           },
           background: {
-            // Use your preferred colors or let MUI decide defaults for dark mode
-            default: mode === 'dark' ? '#303030' : '#fafafa',
-            paper: mode === 'dark' ? '#424242' : '#ffffff',
+            default: mode === 'dark' ? '#121212' : '#fafafa',
+            paper: mode === 'dark' ? '#1e1e1e' : '#ffffff',
           },
           text: {
-            primary: mode === 'dark' ? '#fff' : '#2c3e50', // Adjust as needed
-            secondary: '#546e7a',
+            primary: mode === 'dark' ? '#ffffff' : '#2c3e50',
+            secondary: mode === 'dark' ? '#b0bec5' : '#546e7a',
           },
         },
         typography: {
@@ -74,17 +73,21 @@ export default function ThemeRegistry({
           MuiCssBaseline: {
             styleOverrides: {
               body: {
-                backgroundColor: mode === 'dark' ? '#303030' : '#fafafa',
+                backgroundColor: mode === 'dark' ? '#121212' : '#fafafa',
                 transition: 'background-color 0.3s',
+              },
+              '#__next': {
+                minHeight: '100vh',
+                backgroundColor: mode === 'dark' ? '#121212' : '#fafafa',
               },
             },
           },
           MuiPaper: {
             styleOverrides: {
               root: {
-                backgroundImage:
-                  'linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9))',
-                borderRadius: 8,
+                backgroundImage: 'none',
+                backgroundColor: mode === 'dark' ? '#1e1e1e' : '#ffffff',
+                transition: 'background-color 0.3s',
               },
             },
           },
@@ -108,7 +111,51 @@ export default function ThemeRegistry({
           MuiAppBar: {
             styleOverrides: {
               root: {
-                backgroundImage: 'linear-gradient(to right, #1e88e5, #1565c0)',
+                backgroundImage:
+                  mode === 'dark'
+                    ? 'linear-gradient(to right, #0d47a1, #1565c0)'
+                    : 'linear-gradient(to right, #1e88e5, #1565c0)',
+                backgroundColor: 'transparent',
+              },
+            },
+          },
+          MuiDrawer: {
+            styleOverrides: {
+              paper: {
+                backgroundColor: mode === 'dark' ? '#1e1e1e' : '#ffffff',
+                transition: 'background-color 0.3s',
+              },
+            },
+          },
+          MuiListItem: {
+            styleOverrides: {
+              root: {
+                '&.Mui-selected, &.Mui-selected:hover': {
+                  backgroundColor:
+                    mode === 'dark'
+                      ? 'rgba(255, 255, 255, 0.08)'
+                      : 'rgba(0, 0, 0, 0.04)',
+                },
+                '&:hover': {
+                  backgroundColor:
+                    mode === 'dark'
+                      ? 'rgba(255, 255, 255, 0.05)'
+                      : 'rgba(0, 0, 0, 0.04)',
+                },
+              },
+            },
+          },
+          MuiListItemText: {
+            styleOverrides: {
+              primary: {
+                color: mode === 'dark' ? '#ffffff' : '#2c3e50',
+              },
+            },
+          },
+          MuiListItemIcon: {
+            styleOverrides: {
+              root: {
+                color: mode === 'dark' ? '#b0bec5' : '#546e7a',
               },
             },
           },

@@ -59,7 +59,7 @@ export default function Home() {
               mx: 'auto',
             }}
           >
-            Your perfect beachfront getaway awaits
+            Enjoy your home away from home
           </Typography>
           <Box
             sx={{

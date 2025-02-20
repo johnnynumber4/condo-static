@@ -1,35 +1,25 @@
-'use client';
-import { useEffect } from 'react';
-import ThemeRegistry from './components/ThemeRegistry/ThemeRegistry';
-import Navigation from './components/Navigation/Navigation';
-import { registerServiceWorker } from './pwa';
-import InstallPWA from './components/InstallPWA';
+import { Metadata } from 'next';
+import ClientLayout from './ClientLayout';
+
+export const metadata: Metadata = {
+  title: 'Paradise 252 @ Atlantica II',
+  description: 'Your perfect beachfront getaway in Myrtle Beach',
+  manifest: '/manifest.json',
+  themeColor: '#1e88e5',
+  icons: {
+    icon: '/sun.svg',
+  },
+};
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  useEffect(() => {
-    registerServiceWorker();
-  }, []);
-
   return (
     <html lang="en">
       <body>
-        <ThemeRegistry>
-          <Navigation />
-          <main
-            style={{
-              marginBottom: '2rem', // Add margin to the bottom
-              minHeight: 'calc(100vh - 64px)', // Account for navbar height
-              paddingTop: '1rem', // Add padding to top of main content
-            }}
-          >
-            {children}
-          </main>
-          <InstallPWA />
-        </ThemeRegistry>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );
