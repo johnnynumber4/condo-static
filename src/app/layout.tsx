@@ -18,11 +18,13 @@ export default function RootLayout({
       <body>
         <ThemeRegistry>
           <Navigation />
-          <main style={{ 
-            marginBottom: '2rem',  // Add margin to the bottom
-            minHeight: 'calc(100vh - 64px)', // Account for navbar height
-            paddingTop: '1rem' // Add padding to top of main content
-          }}>
+          <main
+            style={{
+              marginBottom: '2rem', // Add margin to the bottom
+              minHeight: 'calc(100vh - 64px)', // Account for navbar height
+              paddingTop: '1rem', // Add padding to top of main content
+            }}
+          >
             {children}
           </main>
         </ThemeRegistry>

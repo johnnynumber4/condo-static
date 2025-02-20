@@ -2,7 +2,7 @@ import sharp from 'sharp';
 
 async function generateIcons() {
   const sizes = [192, 512];
-  
+
   for (const size of sizes) {
     await sharp('public/app-icon.svg')
       .resize(size, size)
@@ -11,4 +11,4 @@ async function generateIcons() {
   }
 }
 
-generateIcons().catch(console.error); 
+generateIcons().catch(console.error);

@@ -6,6 +6,6 @@ export const metadata: Metadata = {
   manifest: '/manifest.json',
   themeColor: '#1e88e5',
   icons: {
-    icon: '/sun.svg'
+    icon: '/sun.svg',
   },
-}; 
+};

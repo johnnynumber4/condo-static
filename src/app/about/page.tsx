@@ -24,18 +24,20 @@ export default function About() {
         </Typography>
 
         <Paper sx={{ p: 4, mb: 4 }}>
-          <Box sx={{ 
-            position: 'relative',
-            height: '400px',
-            mb: 4,
-            borderRadius: 2,
-            overflow: 'hidden'
-          }}>
+          <Box
+            sx={{
+              position: 'relative',
+              height: '400px',
+              mb: 4,
+              borderRadius: 2,
+              overflow: 'hidden',
+            }}
+          >
             <Image
               src="/sunset-toast.jpg"
               alt="Sunset toast on the balcony"
               fill
-              style={{ 
+              style={{
                 objectFit: 'cover',
                 objectPosition: 'center',
               }}
