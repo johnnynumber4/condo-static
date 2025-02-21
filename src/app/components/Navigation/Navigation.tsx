@@ -107,7 +107,7 @@ export default function Navigation() {
             </IconButton>
           )}
           <Typography variant="h6" component="div">
-            Paradise 252
+            Paradise 252 @ Atlantica II
           </Typography>
 
           <Box sx={{ flexGrow: 1 }} />
