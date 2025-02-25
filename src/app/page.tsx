@@ -102,7 +102,7 @@ export default function Home() {
             <Button
               variant="contained"
               size="large"
-              href="https://www.booking.com"
+              href="/booking"
               target="_blank"
               rel="noopener noreferrer"
               sx={{

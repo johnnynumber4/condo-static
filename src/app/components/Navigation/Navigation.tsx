@@ -81,7 +81,7 @@ export default function Navigation() {
       ))}
       <ListItem
         component="a"
-        href="https://www.hosteeva.com/properties/available/details/12926-hosteeva-oceanfront-sunny-condo-w-pool-in-atlantica-towers-condo"
+        href="/booking"
         target="_blank"
         rel="noopener noreferrer"
       >
