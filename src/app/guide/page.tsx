@@ -87,40 +87,6 @@ export default function Guide() {
               allowFullScreen
             />
           </Box>
-
-          <Typography variant="h6" gutterBottom>
-            Pool Gate Instructions:
-          </Typography>
-          <Typography variant="body1" paragraph>
-            When you are opening the pool gate, after you enter your code, make
-            sure you turn the top of the latch away from the support.
-          </Typography>
-          <Box sx={{ position: 'relative', paddingTop: '56.25%', mb: 2 }}>
-            <iframe
-              src="https://www.youtube.com/embed/q-Lj69bVuDs"
-              title="Pool Gate Instructions"
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                border: 0,
-              }}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </Box>
-
-          <Typography variant="h6" gutterBottom>
-            New Building
-          </Typography>
-          <Typography variant="h6" gutterBottom>
-            Channel Guide:
-          </Typography>
-          <Typography variant="body1" paragraph>
-            Channel Guide
-          </Typography>
         </Paper>
       </Box>
     </Container>

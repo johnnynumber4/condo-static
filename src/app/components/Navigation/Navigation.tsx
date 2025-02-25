@@ -38,7 +38,7 @@ const navItems = [
   // { text: 'Guest Book', href: '/guestbook', icon: <BookIcon /> },
   { text: 'Activities', href: '/activities', icon: <LocationIcon /> },
   { text: 'Groceries', href: '/groceries', icon: <ShoppingCartIcon /> },
-  { text: 'Important Info', href: '/info', icon: <InfoIcon /> },
+  // { text: 'Important Info', href: '/info', icon: <InfoIcon /> },
 ];
 
 export default function Navigation() {
@@ -81,7 +81,7 @@ export default function Navigation() {
       ))}
       <ListItem
         component="a"
-        href="https://www.hosteeva.com/properties/available/details/12926-hosteeva-oceanfront-sunny-condo-w-pool-in-atlantica-towers-condo"
+        href="/booking"
         target="_blank"
         rel="noopener noreferrer"
       >

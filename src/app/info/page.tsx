@@ -37,35 +37,35 @@ export default function ImportantInfo() {
             House Rules
           </Typography>
           <List sx={{ pl: 2 }}>
-            <ListItem sx={{ display: 'list-item' }}>
+            {/* <ListItem sx={{ display: 'list-item' }}>
               For same day late check-ins, you need to get the host&apos;s
               approval before booking.
-            </ListItem>
+            </ListItem> */}
             <ListItem sx={{ display: 'list-item' }}>
-              Grilling is prohibited. Penalty: Any violation of this policy will
+              Grilling is prohibited in unit. Penalty: Any violation of this policy will
               incur a $200.00 fine.
             </ListItem>
             <ListItem sx={{ display: 'list-item' }}>
               Bicycles, motorcycles, mopeds, and trailers are not allowed.
             </ListItem>
-            <ListItem sx={{ display: 'list-item' }}>
+            {/* <ListItem sx={{ display: 'list-item' }}>
               State Identification Card or Driver License copy will be requested
               upon booking.
-            </ListItem>
+            </ListItem> */}
             <ListItem sx={{ display: 'list-item' }}>
-              NO SMOKING in unit/house as well as the balcony. Any violation of
+              No Smoking in unit/house as well as the balcony. Any violation of
               the smoking policy will incur a $250 fine plus the cleaning costs
               necessary to remove smoke odors from the unit/house and/or linens.
             </ListItem>
-            <ListItem sx={{ display: 'list-item' }}>
+            {/* <ListItem sx={{ display: 'list-item' }}>
               NO PETS ALLOWED. Any violation of this policy will incur a $200.00
               fine.
-            </ListItem>
-            <ListItem sx={{ display: 'list-item' }}>
+            </ListItem> */}
+            {/* <ListItem sx={{ display: 'list-item' }}>
               Please note: We are not responsible for any accidents, injuries,
               as well as stolen or damaged items that occur while on the
               premises, its facilities or parking lots.
-            </ListItem>
+            </ListItem> */}
             <ListItem sx={{ display: 'list-item' }}>
               Gatherings of more than 6 people including both overnight guests
               and visitors are not allowed and may be subject to eviction.
