@@ -38,7 +38,7 @@ const navItems = [
   // { text: 'Guest Book', href: '/guestbook', icon: <BookIcon /> },
   { text: 'Activities', href: '/activities', icon: <LocationIcon /> },
   { text: 'Groceries', href: '/groceries', icon: <ShoppingCartIcon /> },
-  { text: 'Important Info', href: '/info', icon: <InfoIcon /> },
+  // { text: 'Important Info', href: '/info', icon: <InfoIcon /> },
 ];
 
 export default function Navigation() {

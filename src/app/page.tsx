@@ -154,7 +154,7 @@ export default function Home() {
             </Paper>
           </Grid>
 
-          <Grid item xs={12} sm={6}>
+          {/* <Grid item xs={12} sm={6}>
             <Paper
               sx={{
                 p: 3,
@@ -181,7 +181,7 @@ export default function Home() {
                 Open Guest Book
               </Button>
             </Paper>
-          </Grid>
+          </Grid> */}
 
           <Grid item xs={12} sm={6}>
             <Paper
@@ -212,7 +212,7 @@ export default function Home() {
             </Paper>
           </Grid>
 
-          <Grid item xs={12} sm={6}>
+          {/* <Grid item xs={12} sm={6}>
             <Paper
               sx={{
                 p: 3,
@@ -239,7 +239,7 @@ export default function Home() {
                 View Info
               </Button>
             </Paper>
-          </Grid>
+          </Grid> */}
           <Grid item xs={12} sm={6}>
             <Paper
               sx={{
