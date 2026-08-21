@@ -147,6 +147,19 @@ const categories: Category[] = [
     icon: <SportsBowlingIcon />,
     places: [
       {
+        name: '810 Billiards & Bowling',
+        note: 'At The Market Common',
+        description:
+          'Bowling lanes and pool tables together, with food and drink brought to you while you play. It sits in The Market Common — the walkable shops-and-restaurants district built on the old air force base — so it is easy to make an evening of it either side of a game.',
+        address: '1190 Farrow Pkwy, Myrtle Beach, SC 29577',
+        links: [
+          {
+            text: '810bowling.com',
+            url: 'https://810bowling.com/810-bowling-myrtle-beach-sc',
+          },
+        ],
+      },
+      {
         name: 'Stars and Strikes',
         note: 'At Coastal Grand Mall',
         description:
