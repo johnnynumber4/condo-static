@@ -40,21 +40,21 @@ pnpm format       # prettier --write .
 Most of what you will want to change lives in plain arrays near the top of a
 file, so you can edit the words without touching any layout:
 
-- **Site name, description, booking link, nav order** — `src/app/lib/site.ts`.
+- **Site name, description, booking link, nav order**: `src/app/lib/site.ts`.
   The booking URL is defined once here and used by the nav, the buttons and
   the `/booking` redirect.
-- **Photos** — `src/app/lib/gallery.ts`. `heroPhoto` is the big image on the
+- **Photos**: `src/app/lib/gallery.ts`. `heroPhoto` is the big image on the
   home and hosts pages. `galleryPhotos` drives the "A look around" strip.
-- **Activities** — the `categories` array in
+- **Activities**: the `categories` array in
   `src/app/activities/ActivitiesContent.tsx`. Each category holds a list of
   places; add a place by adding an object to the right category's `places`.
-- **Restaurants and breweries** — the `categories` array in
+- **Restaurants and breweries**: the `categories` array in
   `src/app/food/FoodContent.tsx`, same shape as activities.
-- **Grocery stores** — the `stores` array in
+- **Grocery stores**: the `stores` array in
   `src/app/groceries/GroceriesContent.tsx`. `coordinates` is a
   `"latitude,longitude"` string and feeds both the map and the directions link.
-- **House rules** — the `rules` array in `src/app/info/InfoContent.tsx`.
-- **Guide sections** — the `sections` array in
+- **House rules**: the `rules` array in `src/app/info/InfoContent.tsx`.
+- **Guide sections**: the `sections` array in
   `src/app/guide/GuideContent.tsx`.
 
 ### Adding photos
@@ -90,8 +90,8 @@ system setting.
 home screen. The service worker serves pages network-first with the cached copy
 as an offline fallback, and static assets cache-first.
 
-**Bump `CACHE_NAME` in `public/sw.js` whenever the cached shell changes** —
-the activate handler deletes every cache that does not match, and that is what
+**Bump `CACHE_NAME` in `public/sw.js` whenever the cached shell changes.**
+The activate handler deletes every cache that does not match, and that is what
 retires the previous version on devices that already have the app installed.
 
 ### Adding a place
@@ -121,7 +121,7 @@ search for the place name, so an entry is never broken for want of an address.
 - **`pnpm.overrides` in `package.json`** pins patched releases of transitive
   build-toolchain packages (postcss, minimatch, sharp and friends) that their
   parents had not yet picked up. Each pin stays inside the dependent's major
-  version. Revisit them when upgrading Next — once the parent ships the
+  version. Revisit them when upgrading Next: once the parent ships the
   patched version itself, the override can go.
 
 Run `pnpm audit` before deploying after any dependency change.

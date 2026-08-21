@@ -5,7 +5,7 @@ import { createTheme } from '@mui/material/styles';
  * sunset orange reserved for the things we most want guests to click.
  *
  * The theme is built on MUI's CSS-variable mode so the colour scheme is
- * resolved by `InitColorSchemeScript` before first paint — the guest's choice
+ * resolved by `InitColorSchemeScript` before first paint, so the guest's choice
  * persists across visits and there is no light-mode flash on load.
  */
 export const tokens = {

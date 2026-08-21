@@ -28,15 +28,15 @@ const categories: Category[] = [
         name: 'The Boardwalk',
         note: 'Two blocks south',
         description:
-          'Starts at 14th Avenue N and runs under three miles round trip — perfect for a sunrise walk or run. Pull up the live cams and see if you can spot your family on the beach.',
+          'Starts at 14th Avenue N and runs under three miles round trip, perfect for a sunrise walk or run. Pull up the live cams and see if you can spot your family on the beach.',
         address: 'Myrtle Beach Boardwalk, Myrtle Beach, SC',
         links: [
           {
-            text: 'Live cam — north end',
+            text: 'Live cam: north end',
             url: 'https://www.earthcam.com/usa/southcarolina/myrtlebeach/',
           },
           {
-            text: 'Live cam — volleyball courts',
+            text: 'Live cam: volleyball courts',
             url: 'https://www.earthcam.com/usa/southcarolina/myrtlebeach/volleyball/',
           },
         ],
@@ -52,7 +52,7 @@ const categories: Category[] = [
         name: "Captain Hook's Adventure Golf",
         note: 'A few blocks north',
         description:
-          'Two eighteen-hole pirate courses — Hooks and Lost Boys — with a smoking skull entrance, a climbable pirate ship and waterfalls. Gentle enough for small children.',
+          'Two eighteen-hole pirate courses, Hooks and Lost Boys, with a smoking skull entrance, a climbable pirate ship and waterfalls. Gentle enough for small children.',
         address: '2205 N Kings Hwy, Myrtle Beach, SC 29577',
       },
       {
@@ -67,7 +67,7 @@ const categories: Category[] = [
   {
     id: 'shows',
     title: 'Shows worth booking ahead',
-    blurb: 'These sell out in season — reserve before you drive over.',
+    blurb: 'These sell out in season, so reserve before you drive over.',
     icon: <TheaterIcon />,
     places: [
       {
@@ -87,7 +87,7 @@ const categories: Category[] = [
         name: 'Medieval Times',
         note: 'Short drive',
         description:
-          'A family-friendly feast and tournament in the style of an 11th-century banquet: four courses while you cheer on one of six jousting knights. Book early — it fills up.',
+          'A family-friendly feast and tournament in the style of an 11th-century banquet: four courses while you cheer on one of six jousting knights. Book early, because it fills up.',
       },
       {
         name: 'Broadway at the Beach',
@@ -150,7 +150,7 @@ const categories: Category[] = [
         name: '810 Billiards & Bowling',
         note: 'At The Market Common',
         description:
-          'Bowling lanes and pool tables together, with food and drink brought to you while you play. It sits in The Market Common — the walkable shops-and-restaurants district built on the old air force base — so it is easy to make an evening of it either side of a game.',
+          'Bowling lanes and pool tables together, with food and drink brought to you while you play. It sits in The Market Common, the walkable shops-and-restaurants district built on the old air force base, so it is easy to make an evening of it either side of a game.',
         address: '1190 Farrow Pkwy, Myrtle Beach, SC 29577',
         links: [
           {
@@ -185,7 +185,7 @@ const categories: Category[] = [
         name: 'Murrells Inlet MarshWalk',
         note: '25 minutes south',
         description:
-          'A half-mile boardwalk over the salt marsh with eight waterfront restaurants along it — Wahoo’s, Drunken Jack’s, Bovine’s, Creek Ratz and more — most with live music and a deck facing the sunset. Go for an early dinner and stay for the light.',
+          'A half-mile boardwalk over the salt marsh with eight waterfront restaurants along it: Wahoo’s, Drunken Jack’s, Bovine’s, Creek Ratz and more, most with live music and a deck facing the sunset. Go for an early dinner and stay for the light.',
         address: 'MarshWalk, Murrells Inlet, SC 29576',
       },
       {

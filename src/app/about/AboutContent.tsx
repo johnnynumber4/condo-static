@@ -20,7 +20,7 @@ export default function AboutContent() {
     <>
       <PageHeader
         eyebrow="Your hosts"
-        title="We are unit 252 — but we think 2 + 5 + 2 = paradise."
+        title="We are unit 252, but we think 2 + 5 + 2 = paradise."
         lead="We hope you enjoy your stay as much as we enjoy coming down here. This site doubles as the house manual, so keep it handy through the week."
       />
 

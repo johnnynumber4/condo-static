@@ -27,7 +27,7 @@ const categories: Category[] = [
         name: "Pirate's Table Calabash Seafood Buffet",
         note: '20 minutes south · Surfside Beach',
         description:
-          'One of the biggest buffets on the strand — crab legs, prime rib and a wall of Calabash-fried seafood — and in season there are pirates and mermaids swimming in a 10,000-gallon pool while you eat. Worth the drive with children.',
+          'One of the biggest buffets on the strand: crab legs, prime rib and a wall of Calabash-fried seafood. In season there are pirates and mermaids swimming in a 10,000-gallon pool while you eat. Worth the drive with children.',
         address: '1100 Water Ave, Surfside Beach, SC 29575',
       },
       {
@@ -47,7 +47,7 @@ const categories: Category[] = [
         name: 'Seafood World Calabash Seafood & Steak Buffet',
         note: '5 minutes south · the closest',
         description:
-          'The closest of the big buffets to the condo. More than 120 items — snow crab, broiled and fried seafood, steaks and a long dessert line.',
+          'The closest of the big buffets to the condo. More than 120 items: snow crab, broiled and fried seafood, steaks and a long dessert line.',
         address: '411 N Kings Hwy, Myrtle Beach, SC 29577',
         links: [
           { text: 'seafoodworld.net', url: 'https://www.seafoodworld.net/' },
@@ -57,7 +57,7 @@ const categories: Category[] = [
         name: "Captain George's Seafood",
         note: '5 minutes away',
         description:
-          'Running since the late seventies, and the most upscale room of the bunch — over seventy items on the buffet, with table service for drinks.',
+          'Running since the late seventies, and the most upscale room of the bunch. Over seventy items on the buffet, with table service for drinks.',
         address: '1401 29th Ave N, Myrtle Beach, SC 29577',
       },
     ],
@@ -104,7 +104,7 @@ const categories: Category[] = [
         name: 'Voodoo Brewing Co.',
         note: 'At Broadway at the Beach',
         description:
-          'Veteran-owned brewpub with rotating hop-forward IPAs and stouts alongside scratch-made pub food — burgers, nachos, pretzels and a proper kids’ menu. Ask about Voodoo Love Child, a Belgian tripel aged on sour cherries, raspberries and passion fruit. Easy to fold into a Broadway afternoon.',
+          'Veteran-owned brewpub with rotating hop-forward IPAs and stouts alongside scratch-made pub food: burgers, nachos, pretzels and a proper kids’ menu. Ask about Voodoo Love Child, a Belgian tripel aged on sour cherries, raspberries and passion fruit. Easy to fold into a Broadway afternoon.',
         address: '1318 Celebrity Cir Unit CS8, Myrtle Beach, SC 29577',
         links: [
           {
@@ -131,7 +131,7 @@ const categories: Category[] = [
         name: 'Crooked Hammock Brewery',
         note: '20 minutes north · Barefoot Landing',
         description:
-          'Half beach bar, half backyard — a big outdoor area with lawn games and fire pits, a full family menu, and enough beer to justify the drive. The most to do with children in tow.',
+          'Half beach bar, half backyard, with a big outdoor area of lawn games and fire pits, a full family menu, and enough beer to justify the drive. The most to do with children in tow.',
         address: '4924 Hwy 17 S, North Myrtle Beach, SC 29582',
       },
     ],
@@ -144,7 +144,7 @@ export default function FoodContent() {
       <PageHeader
         eyebrow="Eat and drink"
         title="Where we eat when we are down here."
-        lead="Myrtle Beach runs on all-you-can-eat seafood, but there is more to it than that — here is the short list."
+        lead="Myrtle Beach runs on all-you-can-eat seafood, but there is more to it than that. Here is the short list."
       />
 
       <Container maxWidth="lg" sx={{ py: { xs: 6, md: 9 } }}>
@@ -202,7 +202,7 @@ export default function FoodContent() {
           <Typography variant="body1" color="text.secondary">
             The big Calabash buffets are busiest between six and eight in the
             evening in summer, and most of them do not take reservations. Going
-            early — or after eight — is the difference between walking in and
+            early, or after eight, is the difference between walking in and
             waiting an hour.
           </Typography>
         </Surface>

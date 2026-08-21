@@ -5,7 +5,7 @@ import Paper, { type PaperProps } from '@mui/material/Paper';
 type SurfaceProps = PaperProps & {
   /** Lift the card on hover. Turn off for panels that are not links. */
   interactive?: boolean;
-  /** Render as another element — `Link` for cards that navigate. */
+  /** Render as another element, such as `Link` for cards that navigate. */
   component?: React.ElementType;
   href?: string;
   target?: string;

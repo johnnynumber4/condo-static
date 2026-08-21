@@ -9,8 +9,8 @@ import './globals.css';
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.fullName} — ${site.tagline}`,
-    template: `%s — ${site.name}`,
+    default: `${site.fullName} · ${site.tagline}`,
+    template: `%s · ${site.name}`,
   },
   description: site.description,
   applicationName: site.name,
@@ -19,13 +19,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     siteName: site.fullName,
-    title: `${site.fullName} — ${site.tagline}`,
+    title: `${site.fullName} · ${site.tagline}`,
     description: site.description,
     images: [{ url: '/sunset-toast.jpg', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${site.fullName} — ${site.tagline}`,
+    title: `${site.fullName} · ${site.tagline}`,
     description: site.description,
     images: ['/sunset-toast.jpg'],
   },

@@ -5,7 +5,7 @@
  * of the hosts page.
  *
  * `galleryPhotos` drives the "A look around" strip on the home page. It is
- * empty until there is more than the hero shot to show — the strip hides
+ * empty until there is more than the hero shot to show, so the strip hides
  * itself rather than repeating the photo the guest just scrolled past. To
  * turn it on, drop files into `public/photos/` and add an entry for each; the
  * first one gets the wide featured tile and the rest fill in beside it.
@@ -23,6 +23,6 @@ export const heroPhoto: Photo = {
 };
 
 export const galleryPhotos: Photo[] = [
-  // Example — delete this comment and add real entries:
+  // Example. Delete this comment and add real entries:
   // { src: '/photos/living-room.jpg', alt: 'The living room looking out to the ocean' },
 ];

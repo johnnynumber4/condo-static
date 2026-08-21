@@ -7,7 +7,7 @@ import Surface from './Surface';
 
 export type Place = {
   name: string;
-  /** Short orientation line — how far away it is, or what kind of place it is. */
+  /** Short orientation line: how far away it is, or what kind of place it is. */
   note: string;
   description: string;
   /** Street address, shown on the card and used for the directions link. */

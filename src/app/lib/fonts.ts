@@ -1,6 +1,6 @@
 import { Fraunces, Inter } from 'next/font/google';
 
-/** Display serif — headings and the wordmark. */
+/** Display serif for headings and the wordmark. */
 export const fraunces = Fraunces({
   subsets: ['latin'],
   display: 'swap',

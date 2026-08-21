@@ -38,7 +38,7 @@ const stores: Store[] = [
     name: 'Costco Wholesale',
     tag: 'Membership required',
     description:
-      'Nearby if you already have a membership — local deals alongside the usual comforts from your Costco at home.',
+      'Nearby if you already have a membership. Local deals alongside the usual comforts from your Costco at home.',
     coordinates: '33.70532,-78.9159',
   },
 ];

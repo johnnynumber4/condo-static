@@ -29,7 +29,7 @@ const sections: Section[] = [
         </Typography>
         <Typography variant="body1">
           If you come in through the front door instead, note that the people at
-          the front desk work for the building rather than for us — they will
+          the front desk work for the building rather than for us, so they will
           not be able to help with the unit. Use the contact details from your
           check-in message with any questions.
         </Typography>

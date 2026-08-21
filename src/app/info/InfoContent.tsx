@@ -24,7 +24,7 @@ const rules: Rule[] = [
     icon: <SmokeFreeIcon />,
     title: 'No smoking, indoors or on the balcony',
     detail:
-      'This one matters most to us — smoke lingers in the linens and the next guests notice.',
+      'This one matters most to us. Smoke lingers in the linens and the next guests notice.',
     penalty:
       '$250 fine plus the cleaning costs needed to remove the odour from the unit and linens.',
   },
@@ -70,7 +70,7 @@ export default function InfoContent() {
         eyebrow="House rules"
         title="A short list, so the week goes smoothly."
         maxWidth="md"
-        lead="Nothing here is a surprise — but a few of these carry fines from the building, so they are worth two minutes of your time."
+        lead="Nothing here is a surprise, but a few of these carry fines from the building, so they are worth two minutes of your time."
       />
 
       <Container maxWidth="md" sx={{ py: { xs: 6, md: 9 } }}>
@@ -138,7 +138,7 @@ export default function InfoContent() {
           sx={{ mt: 5, textAlign: 'center' }}
         >
           Questions about any of this? Use the contact details from your
-          check-in message — the building&apos;s front desk cannot help with the
+          check-in message. The building&apos;s front desk cannot help with the
           unit.
         </Typography>
       </Container>

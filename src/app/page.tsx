@@ -23,7 +23,7 @@ const paradiseMath = [
   {
     figure: '5',
     label: 'Ways to swim',
-    body: 'Indoor pool, jacuzzi, kiddie pool, lazy river — and the Atlantic.',
+    body: 'Indoor pool, jacuzzi, kiddie pool, lazy river, and the Atlantic.',
   },
   {
     figure: '2',
@@ -125,7 +125,7 @@ export default function Home() {
             }}
           >
             Two bedrooms, two balconies, five ways to swim and a two-minute walk
-            to the boardwalk. We are unit 252 — but we think 2 + 5 + 2 =
+            to the boardwalk. We are unit 252, but we think 2 + 5 + 2 =
             paradise.
           </Typography>
           <Stack

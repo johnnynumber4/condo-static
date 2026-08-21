@@ -13,7 +13,7 @@ export const site = {
   fullName: 'Paradise 252 @ Atlantica II',
   tagline: 'Oceanfront in Myrtle Beach',
   description:
-    'A two-bedroom oceanfront condo at Atlantica II — direct ocean views, five ways to swim, and two minutes on foot to the boardwalk.',
+    'A two-bedroom oceanfront condo at Atlantica II, with direct ocean views, five ways to swim, and two minutes on foot to the boardwalk.',
   address: '1700 N Ocean Blvd, Myrtle Beach, SC 29577',
   url: 'https://paradise252.com',
 } as const;
