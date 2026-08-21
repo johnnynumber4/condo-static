@@ -1,10 +1,41 @@
 'use client';
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+import { Box } from '@mui/material';
 import ThemeRegistry from './components/ThemeRegistry/ThemeRegistry';
 import Navigation from './components/Navigation/Navigation';
+import Footer from './components/Footer';
 import InstallPWA from './components/InstallPWA';
 import { registerServiceWorker } from './pwa';
-import { Box } from '@mui/material';
+
+function Shell({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  // The home hero runs full-bleed beneath the transparent app bar; interior
+  // pages start below it.
+  const isHome = pathname === '/';
+
+  return (
+    <Box
+      sx={{
+        minHeight: '100dvh',
+        display: 'flex',
+        flexDirection: 'column',
+        bgcolor: 'background.default',
+        color: 'text.primary',
+      }}
+    >
+      <Navigation />
+      <Box
+        component="main"
+        sx={{ flex: 1, pt: isHome ? 0 : { xs: '62px', md: '74px' } }}
+      >
+        {children}
+      </Box>
+      <Footer />
+      <InstallPWA />
+    </Box>
+  );
+}
 
 export default function ClientLayout({
   children,
@@ -17,20 +48,7 @@ export default function ClientLayout({
 
   return (
     <ThemeRegistry>
-      <Navigation />
-      <Box
-        component="main"
-        sx={{
-          marginBottom: '2rem',
-          minHeight: 'calc(100vh - 64px)',
-          paddingTop: '1rem',
-          bgcolor: 'background.default',
-          color: 'text.primary',
-        }}
-      >
-        {children}
-      </Box>
-      <InstallPWA />
+      <Shell>{children}</Shell>
     </ThemeRegistry>
   );
 }
