@@ -29,7 +29,8 @@ pnpm format       # prettier --write .
 | `/`           | Hero, the 2 + 5 + 2 story, photo strip, manual links |
 | `/about`      | Your hosts, the highlights, the tour video           |
 | `/guide`      | Getting into the building, the bonus bed             |
-| `/activities` | Things to do nearby                                  |
+| `/activities` | Things to do nearby, grouped by how far you go       |
+| `/food`       | Buffets, restaurants and breweries                   |
 | `/groceries`  | Grocery stores, each with a map and directions       |
 | `/info`       | House rules                                          |
 | `/booking`    | Server-side redirect to the booking host             |
@@ -44,8 +45,11 @@ file, so you can edit the words without touching any layout:
   the `/booking` redirect.
 - **Photos** — `src/app/lib/gallery.ts`. `heroPhoto` is the big image on the
   home and hosts pages. `galleryPhotos` drives the "A look around" strip.
-- **Activities** — the `activities` array in
-  `src/app/activities/ActivitiesContent.tsx`.
+- **Activities** — the `categories` array in
+  `src/app/activities/ActivitiesContent.tsx`. Each category holds a list of
+  places; add a place by adding an object to the right category's `places`.
+- **Restaurants and breweries** — the `categories` array in
+  `src/app/food/FoodContent.tsx`, same shape as activities.
 - **Grocery stores** — the `stores` array in
   `src/app/groceries/GroceriesContent.tsx`. `coordinates` is a
   `"latitude,longitude"` string and feeds both the map and the directions link.
@@ -89,3 +93,35 @@ as an offline fallback, and static assets cache-first.
 **Bump `CACHE_NAME` in `public/sw.js` whenever the cached shell changes** —
 the activate handler deletes every cache that does not match, and that is what
 retires the previous version on devices that already have the app installed.
+
+### Adding a place
+
+Activities and Eat & Drink share one card (`PlaceCard`). A place looks like:
+
+```ts
+{
+  name: 'Voodoo Brewing Co.',
+  note: 'At Broadway at the Beach',   // short orientation line
+  description: 'What it is and why we send people there.',
+  address: '1318 Celebrity Cir Unit CS8, Myrtle Beach, SC 29577',
+  links: [{ text: 'their site', url: 'https://…' }],   // optional
+}
+```
+
+`address` is optional. When it is there the card shows it and links straight
+to Google Maps directions; when it is missing the card falls back to a maps
+search for the place name, so an entry is never broken for want of an address.
+
+## Dependencies and security
+
+`pnpm audit` should report zero advisories. Two things keep it there:
+
+- **Next.js is pinned to an exact version** (not a `^` range) so an upgrade is
+  always a deliberate, tested change. Check `pnpm audit` after bumping it.
+- **`pnpm.overrides` in `package.json`** pins patched releases of transitive
+  build-toolchain packages (postcss, minimatch, sharp and friends) that their
+  parents had not yet picked up. Each pin stays inside the dependent's major
+  version. Revisit them when upgrading Next — once the parent ships the
+  patched version itself, the override can go.
+
+Run `pnpm audit` before deploying after any dependency change.

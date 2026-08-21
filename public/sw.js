@@ -1,6 +1,6 @@
 // Bump this whenever the cached shell changes; the activate handler below
 // deletes every cache that does not match, which is what retires the old one.
-const CACHE_NAME = 'paradise252-v2';
+const CACHE_NAME = 'paradise252-v3';
 
 const PRECACHE_ASSETS = [
   '/',
@@ -11,6 +11,7 @@ const PRECACHE_ASSETS = [
   '/about',
   '/guide',
   '/activities',
+  '/food',
   '/groceries',
   '/info',
 ];

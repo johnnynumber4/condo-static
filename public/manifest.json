@@ -28,6 +28,11 @@
       "description": "Getting in and settling down"
     },
     {
+      "name": "Eat & Drink",
+      "url": "/food",
+      "description": "Where to eat nearby"
+    },
+    {
       "name": "Activities",
       "url": "/activities",
       "description": "Things to do nearby"

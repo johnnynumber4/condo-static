@@ -1,88 +1,195 @@
 'use client';
 import * as React from 'react';
-import {
-  Box,
-  Container,
-  Link as MuiLink,
-  Stack,
-  Typography,
-} from '@mui/material';
+import { Box, Container, Stack, Typography } from '@mui/material';
 import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalkOutlined';
-import CastleIcon from '@mui/icons-material/CastleOutlined';
+import TheaterIcon from '@mui/icons-material/TheaterComedyOutlined';
 import GolfCourseIcon from '@mui/icons-material/GolfCourseOutlined';
-import PhishingIcon from '@mui/icons-material/PhishingOutlined';
-import StorefrontIcon from '@mui/icons-material/StorefrontOutlined';
-import LaunchIcon from '@mui/icons-material/Launch';
+import SportsBowlingIcon from '@mui/icons-material/SportsEsportsOutlined';
+import MapIcon from '@mui/icons-material/MapOutlined';
 import PageHeader from '../components/ui/PageHeader';
-import Surface from '../components/ui/Surface';
+import PlaceCard, { type Place } from '../components/ui/PlaceCard';
 
-type Activity = {
+type Category = {
+  id: string;
   title: string;
-  distance: string;
+  blurb: string;
   icon: React.ReactNode;
-  description: string;
-  links?: { text: string; url: string }[];
+  places: Place[];
 };
 
-const activities: Activity[] = [
+const categories: Category[] = [
   {
-    title: 'The Boardwalk',
-    distance: '2 blocks south',
+    id: 'nearby',
+    title: 'Walk to it',
+    blurb: 'Close enough that you can leave the car where it is.',
     icon: <DirectionsWalkIcon />,
-    description:
-      'At 14th Avenue N, and perfect for a sunrise walk or run — under three miles round trip. Pull up the live cams and see if you can spot your family on the beach.',
-    links: [
+    places: [
       {
-        text: 'Myrtle Beach cam — north',
-        url: 'https://www.earthcam.com/usa/southcarolina/myrtlebeach/',
+        name: 'The Boardwalk',
+        note: 'Two blocks south',
+        description:
+          'Starts at 14th Avenue N and runs under three miles round trip — perfect for a sunrise walk or run. Pull up the live cams and see if you can spot your family on the beach.',
+        address: 'Myrtle Beach Boardwalk, Myrtle Beach, SC',
+        links: [
+          {
+            text: 'Live cam — north end',
+            url: 'https://www.earthcam.com/usa/southcarolina/myrtlebeach/',
+          },
+          {
+            text: 'Live cam — volleyball courts',
+            url: 'https://www.earthcam.com/usa/southcarolina/myrtlebeach/volleyball/',
+          },
+        ],
       },
       {
-        text: 'Myrtle Beach cam — volleyball',
-        url: 'https://www.earthcam.com/usa/southcarolina/myrtlebeach/volleyball/',
+        name: 'Second Avenue Pier',
+        note: 'Walking distance',
+        description:
+          'Fishing rentals are available and no licence is required. Worth the walk for the views alone, and there is a restaurant at the end of it.',
+        address: '110 N Ocean Blvd, Myrtle Beach, SC 29577',
+      },
+      {
+        name: "Captain Hook's Adventure Golf",
+        note: 'A few blocks north',
+        description:
+          'Two eighteen-hole pirate courses — Hooks and Lost Boys — with a smoking skull entrance, a climbable pirate ship and waterfalls. Gentle enough for small children.',
+        address: '2205 N Kings Hwy, Myrtle Beach, SC 29577',
+      },
+      {
+        name: 'Mt. Atlanticus Minotaur Golf',
+        note: 'A mile south',
+        description:
+          'The famous one: 36 holes climbing an indoor-outdoor Atlantis mountain of caves, waterfalls and bridges, with ocean views from the upper level. Sink the 19th hole and you putt free for life.',
+        address: '707 N Kings Hwy, Myrtle Beach, SC 29577',
       },
     ],
   },
   {
-    title: 'Second Avenue Pier',
-    distance: 'Walking distance',
-    icon: <PhishingIcon />,
-    description:
-      'Fishing rentals are available and no licence is required. Worth the walk for the views alone, and there is a restaurant at the end of it.',
+    id: 'shows',
+    title: 'Shows worth booking ahead',
+    blurb: 'These sell out in season — reserve before you drive over.',
+    icon: <TheaterIcon />,
+    places: [
+      {
+        name: 'Pirates Voyage Dinner & Show',
+        note: '10 minutes north',
+        description:
+          'Dolly Parton’s pirate show: two full-sized ships battling in an indoor lagoon, with acrobatics, sword fights and pyrotechnics, plus a four-course feast you eat with your hands. Roughly an hour and a half.',
+        address: '8907 N Kings Hwy, Myrtle Beach, SC 29572',
+        links: [
+          {
+            text: 'Showtimes and tickets',
+            url: 'https://piratesvoyage.com/myrtle-beach',
+          },
+        ],
+      },
+      {
+        name: 'Medieval Times',
+        note: 'Short drive',
+        description:
+          'A family-friendly feast and tournament in the style of an 11th-century banquet: four courses while you cheer on one of six jousting knights. Book early — it fills up.',
+      },
+      {
+        name: 'Broadway at the Beach',
+        note: 'Short drive',
+        description:
+          'Over seventy shops with clothing, gifts, snacks and art, wrapped around a lake, plus attractions, restaurants and theatres if the weather turns.',
+        address: '1325 Celebrity Cir, Myrtle Beach, SC 29577',
+      },
+    ],
   },
   {
+    id: 'golf',
     title: 'Golf',
-    distance: 'Within 20 minutes',
+    blurb: 'More than ten courses sit within a twenty-minute drive.',
     icon: <GolfCourseIcon />,
-    description:
-      'More than ten courses sit within a twenty-minute drive, so you can pick by mood rather than by distance.',
-    links: [
+    places: [
       {
-        text: 'Topgolf — good for golfers and non-golfers alike',
-        url: 'https://topgolf.com/us/myrtle-beach/',
+        name: 'Topgolf',
+        note: 'Good for non-golfers too',
+        description:
+          'Climate-controlled bays, food and drink at the tee, and a scoring system that makes it fun whether or not anyone in your group can actually play.',
+        address: '2850 Robert Grissom Pkwy, Myrtle Beach, SC 29577',
+        links: [
+          {
+            text: 'Topgolf Myrtle Beach',
+            url: 'https://topgolf.com/us/myrtle-beach/',
+          },
+        ],
       },
       {
-        text: 'River Oaks Golf Club — club rentals $20 a set',
-        url: 'https://www.riveroaksgolf.com/',
+        name: 'River Oaks Golf Club',
+        note: 'Club rentals $20 a set',
+        description:
+          'Twenty-seven holes and an easy tee time to get, which makes it a good pick if you decided to play that morning.',
+        links: [
+          {
+            text: 'River Oaks Golf Club',
+            url: 'https://www.riveroaksgolf.com/',
+          },
+        ],
       },
       {
-        text: 'Arrowhead Country Club — club rentals $30 a set',
-        url: 'https://arrowheadcc.com/',
+        name: 'Arrowhead Country Club',
+        note: 'Club rentals $30 a set',
+        description:
+          'Twenty-seven holes along the Intracoastal Waterway, and one of the closest good courses to the condo.',
+        links: [
+          { text: 'Arrowhead Country Club', url: 'https://arrowheadcc.com/' },
+        ],
       },
     ],
   },
   {
-    title: 'Medieval Times',
-    distance: 'Short drive',
-    icon: <CastleIcon />,
-    description:
-      'A family-friendly feast and tournament in the style of an 11th-century banquet: four courses while you cheer on one of six jousting knights. Book early — it fills up.',
+    id: 'indoors',
+    title: 'Bowling, arcades and rainy days',
+    blurb: 'Somewhere to put the afternoon when the weather turns.',
+    icon: <SportsBowlingIcon />,
+    places: [
+      {
+        name: 'Stars and Strikes',
+        note: 'At Coastal Grand Mall',
+        description:
+          'Twenty-four lanes plus an arcade of more than a hundred games, a multi-storey laser tag arena, axe throwing and a full bar with the game on. The most to do under one roof.',
+        address: '600 Coastal Grand Cir, Myrtle Beach, SC 29577',
+      },
+      {
+        name: "Guy Fieri's Downtown Flavortown",
+        note: 'At Myrtle Beach Mall',
+        description:
+          'Opened in summer 2026 in the old anchor store: fourteen duckpin lanes, over a hundred arcade games, a tiki bar and a very large restaurant. Duckpin uses smaller balls and no finger holes, so children can actually bowl.',
+        address: 'Myrtle Beach Mall, 10177 N Kings Hwy, Myrtle Beach, SC 29572',
+      },
+    ],
   },
   {
-    title: 'Broadway at the Beach',
-    distance: 'Short drive',
-    icon: <StorefrontIcon />,
-    description:
-      'Over seventy shops with clothing, gifts, snacks and art, plus attractions, restaurants and theatres if the weather turns.',
+    id: 'day-trips',
+    title: 'Worth the drive',
+    blurb: 'Half a day south, and a different side of the coast.',
+    icon: <MapIcon />,
+    places: [
+      {
+        name: 'Murrells Inlet MarshWalk',
+        note: '25 minutes south',
+        description:
+          'A half-mile boardwalk over the salt marsh with eight waterfront restaurants along it — Wahoo’s, Drunken Jack’s, Bovine’s, Creek Ratz and more — most with live music and a deck facing the sunset. Go for an early dinner and stay for the light.',
+        address: 'MarshWalk, Murrells Inlet, SC 29576',
+      },
+      {
+        name: 'Brookgreen Gardens',
+        note: '30 minutes south',
+        description:
+          'The country’s first public sculpture garden, with the largest collection of American figurative sculpture anywhere outdoors, set in themed gardens with a lowcountry zoo and trails. Quieter than anything else on this list.',
+        address: '1931 Brookgreen Dr, Murrells Inlet, SC 29576',
+      },
+      {
+        name: 'Huntington Beach State Park',
+        note: 'Next to Brookgreen',
+        description:
+          'Undeveloped beach, a saltmarsh boardwalk and some of the best birding on the coast, plus Atalaya, the old Moorish-style winter home on the dunes. Easy to pair with Brookgreen in one day.',
+        address: '16148 Ocean Hwy, Murrells Inlet, SC 29576',
+      },
+    ],
   },
 ];
 
@@ -92,75 +199,49 @@ export default function ActivitiesContent() {
       <PageHeader
         eyebrow="Around the condo"
         title="Our favourite things to do in Myrtle Beach."
-        lead="A short list we keep coming back to, roughly in order of how far you have to go."
+        lead="Grouped by how far you have to go, starting with what you can reach on foot."
       />
 
       <Container maxWidth="lg" sx={{ py: { xs: 6, md: 9 } }}>
-        <Box
-          sx={{
-            display: 'grid',
-            gap: 3,
-            gridTemplateColumns: { xs: '1fr', md: 'repeat(2, 1fr)' },
-          }}
-        >
-          {activities.map((activity) => (
-            <Surface key={activity.title}>
+        <Stack spacing={{ xs: 7, md: 10 }}>
+          {categories.map((category) => (
+            <Box key={category.id} id={category.id}>
               <Stack
                 direction="row"
-                spacing={2}
-                alignItems="flex-start"
-                sx={{ mb: 2 }}
+                spacing={1.5}
+                alignItems="center"
+                sx={{ color: 'primary.main', mb: 1 }}
               >
-                <Box
-                  sx={{
-                    display: 'grid',
-                    placeItems: 'center',
-                    width: 46,
-                    height: 46,
-                    borderRadius: '50%',
-                    flexShrink: 0,
-                    color: 'primary.main',
-                    bgcolor: 'action.hover',
-                  }}
-                >
-                  {activity.icon}
-                </Box>
-                <Box>
-                  <Typography variant="h5">{activity.title}</Typography>
-                  <Typography variant="overline" color="text.secondary">
-                    {activity.distance}
-                  </Typography>
-                </Box>
+                {category.icon}
+                <Typography variant="overline">{category.title}</Typography>
               </Stack>
-
-              <Typography variant="body1" color="text.secondary">
-                {activity.description}
+              <Typography
+                variant="h4"
+                sx={{ mb: 1, fontSize: { xs: '1.6rem', md: '2rem' } }}
+              >
+                {category.blurb}
               </Typography>
 
-              {activity.links && (
-                <Stack spacing={1} sx={{ mt: 2.5 }}>
-                  {activity.links.map((link) => (
-                    <MuiLink
-                      key={link.url}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      sx={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: 0.75,
-                        color: 'primary.main',
-                      }}
-                    >
-                      {link.text}
-                      <LaunchIcon sx={{ fontSize: 15 }} />
-                    </MuiLink>
-                  ))}
-                </Stack>
-              )}
-            </Surface>
+              <Box
+                sx={{
+                  mt: 3.5,
+                  display: 'grid',
+                  gap: 3,
+                  // Two across, not three: these cards carry a paragraph
+                  // plus an address, and three columns wrapped every title.
+                  gridTemplateColumns: {
+                    xs: '1fr',
+                    md: 'repeat(2, 1fr)',
+                  },
+                }}
+              >
+                {category.places.map((place) => (
+                  <PlaceCard key={place.name} place={place} />
+                ))}
+              </Box>
+            </Box>
           ))}
-        </Box>
+        </Stack>
       </Container>
     </>
   );

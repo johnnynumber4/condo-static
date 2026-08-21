@@ -22,6 +22,7 @@ export const navItems = [
   { text: 'Your Hosts', href: '/about' },
   { text: 'Condo Guide', href: '/guide' },
   { text: 'Activities', href: '/activities' },
+  { text: 'Eat & Drink', href: '/food' },
   { text: 'Groceries', href: '/groceries' },
   { text: 'House Rules', href: '/info' },
 ] as const;

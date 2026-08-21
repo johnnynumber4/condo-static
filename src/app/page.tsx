@@ -6,6 +6,7 @@ import { Box, Button, Container, Stack, Typography } from '@mui/material';
 import MenuBookIcon from '@mui/icons-material/MenuBookOutlined';
 import ExploreIcon from '@mui/icons-material/ExploreOutlined';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasketOutlined';
+import RestaurantIcon from '@mui/icons-material/RestaurantOutlined';
 import GavelIcon from '@mui/icons-material/GavelOutlined';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Surface from './components/ui/Surface';
@@ -43,6 +44,12 @@ const sections = [
     icon: <ExploreIcon />,
     title: 'Activities',
     body: 'Our favourite things to do, from the boardwalk to the golf courses.',
+  },
+  {
+    href: '/food',
+    icon: <RestaurantIcon />,
+    title: 'Eat & Drink',
+    body: 'Seafood buffets, the walkable Austrian place, and the breweries.',
   },
   {
     href: '/groceries',
@@ -245,7 +252,7 @@ export default function Home() {
               gridTemplateColumns: {
                 xs: '1fr',
                 sm: 'repeat(2, 1fr)',
-                lg: 'repeat(4, 1fr)',
+                lg: 'repeat(3, 1fr)',
               },
             }}
           >

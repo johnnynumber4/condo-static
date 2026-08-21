@@ -28,7 +28,9 @@ export default function Navigation() {
   const [scrolled, setScrolled] = React.useState(false);
   const pathname = usePathname();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  // Six nav items plus the wordmark and booking button no longer fit at md,
+  // so the drawer now covers tablets too.
+  const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
 
   // On the home page the bar floats over the hero image until the guest
   // scrolls past it; everywhere else it is solid from the start.
