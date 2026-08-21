@@ -1,9 +1,9 @@
 'use client';
 import * as React from 'react';
-import { Box, Button, Container, Stack, Typography } from '@mui/material';
-import DirectionsIcon from '@mui/icons-material/DirectionsOutlined';
+import { Box, Container, Stack, Typography } from '@mui/material';
 import PageHeader from '../components/ui/PageHeader';
 import Surface from '../components/ui/Surface';
+import DirectionsButton from '../components/ui/DirectionsButton';
 
 type Store = {
   name: string;
@@ -79,16 +79,12 @@ export default function GroceriesContent() {
                   <Typography variant="body1" color="text.secondary">
                     {store.description}
                   </Typography>
-                  <Button
-                    variant="outlined"
-                    startIcon={<DirectionsIcon />}
-                    href={`https://www.google.com/maps/dir/?api=1&destination=${store.coordinates}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <DirectionsButton
+                    destination={store.coordinates}
+                    name={store.name}
+                    size="medium"
                     sx={{ mt: 3 }}
-                  >
-                    Get directions
-                  </Button>
+                  />
                 </Box>
 
                 <Box

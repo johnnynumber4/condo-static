@@ -6,7 +6,9 @@ import BedIcon from '@mui/icons-material/KingBedOutlined';
 import InfoIcon from '@mui/icons-material/InfoOutlined';
 import PageHeader from '../components/ui/PageHeader';
 import Surface from '../components/ui/Surface';
+import DirectionsButton from '../components/ui/DirectionsButton';
 import VideoEmbed from '../components/ui/VideoEmbed';
+import { site } from '../lib/site';
 
 type Section = {
   id: string;
@@ -81,12 +83,26 @@ export default function GuideContent() {
             <InfoIcon sx={{ color: 'secondary.main', mt: '2px' }} />
             <Box>
               <Typography variant="h6" gutterBottom>
-                About the codes
+                Address and codes
               </Typography>
               <Typography variant="body1" color="text.secondary">
                 All codes are provided at check-in. There is a separate one for
                 the building entrance, the pool area and unit 252 itself.
               </Typography>
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{ mt: 2, fontWeight: 600 }}
+              >
+                {site.address}
+              </Typography>
+              <DirectionsButton
+                destination={site.address}
+                name={site.fullName}
+                label="Directions to the condo"
+                size="medium"
+                sx={{ mt: 1.5 }}
+              />
             </Box>
           </Stack>
         </Surface>

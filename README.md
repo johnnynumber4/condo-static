@@ -108,9 +108,17 @@ Activities and Eat & Drink share one card (`PlaceCard`). A place looks like:
 }
 ```
 
-`address` is optional. When it is there the card shows it and links straight
-to Google Maps directions; when it is missing the card falls back to a maps
-search for the place name, so an entry is never broken for want of an address.
+`address` is optional. When it is there the card prints it and the directions
+button navigates to it; when it is missing the button falls back to the place
+name plus the town, so every place gets working directions either way.
+
+Every "Get directions" button on the site is the same component,
+`components/ui/DirectionsButton`, and every maps link is built by
+`lib/maps.ts`. Use them rather than hand-rolling a maps URL: the button also
+puts the place name in its accessible label, which is what tells a screen
+reader which of a dozen identical buttons it is on. The condo's own address
+lives in `site.address` and powers the buttons in the footer and on the guide
+page.
 
 ## Dependencies and security
 

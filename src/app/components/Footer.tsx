@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 import Link from 'next/link';
 import { BOOKING_URL_TRACKED, navItems, site } from '../lib/site';
+import DirectionsButton from './ui/DirectionsButton';
 
 export default function Footer() {
   return (
@@ -83,11 +84,12 @@ export default function Footer() {
             >
               Where to find us
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
               Atlantica Towers II, Unit 252
               <br />
-              Myrtle Beach, South Carolina
+              {site.address}
             </Typography>
+            <DirectionsButton destination={site.address} name={site.fullName} />
           </Box>
         </Stack>
 
