@@ -62,6 +62,13 @@ const categories: Category[] = [
           'The famous one: 36 holes climbing an indoor-outdoor Atlantis mountain of caves, waterfalls and bridges, with ocean views from the upper level. Sink the 19th hole and you putt free for life.',
         address: '707 N Kings Hwy, Myrtle Beach, SC 29577',
       },
+      {
+        name: 'Broadway at the Beach',
+        note: 'About a mile inland',
+        description:
+          'Over seventy shops with clothing, gifts, snacks and art, wrapped around a lake, plus attractions, restaurants and theaters if the weather turns. Around twenty-five minutes on foot heading inland, or five minutes in the car if you would rather not walk back in the heat.',
+        address: '1325 Celebrity Cir, Myrtle Beach, SC 29577',
+      },
     ],
   },
   {
@@ -88,13 +95,6 @@ const categories: Category[] = [
         note: 'Short drive',
         description:
           'A family-friendly feast and tournament in the style of an 11th-century banquet: four courses while you cheer on one of six jousting knights. Book early, because it fills up.',
-      },
-      {
-        name: 'Broadway at the Beach',
-        note: 'Short drive',
-        description:
-          'Over seventy shops with clothing, gifts, snacks and art, wrapped around a lake, plus attractions, restaurants and theaters if the weather turns.',
-        address: '1325 Celebrity Cir, Myrtle Beach, SC 29577',
       },
     ],
   },
