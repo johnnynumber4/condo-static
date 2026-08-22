@@ -10,6 +10,7 @@ import BadgeIcon from '@mui/icons-material/BadgeOutlined';
 import ScheduleIcon from '@mui/icons-material/ScheduleOutlined';
 import ReportIcon from '@mui/icons-material/ReportProblemOutlined';
 import PageHeader from '../components/ui/PageHeader';
+import { shortLandscape } from '../lib/theme';
 import Surface from '../components/ui/Surface';
 
 type Rule = {
@@ -73,7 +74,10 @@ export default function InfoContent() {
         lead="Nothing here is a surprise, but a few of these carry fines from the building, so they are worth two minutes of your time."
       />
 
-      <Container maxWidth="md" sx={{ py: { xs: 6, md: 9 } }}>
+      <Container
+        maxWidth="md"
+        sx={{ py: { xs: 6, md: 9 }, [shortLandscape]: { py: 4 } }}
+      >
         <Stack spacing={2.5}>
           {rules.map((rule) => (
             <Surface key={rule.title} interactive={false}>

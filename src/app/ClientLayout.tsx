@@ -7,6 +7,7 @@ import Navigation from './components/Navigation/Navigation';
 import Footer from './components/Footer';
 import InstallPWA from './components/InstallPWA';
 import { registerServiceWorker } from './pwa';
+import { shortLandscape } from './lib/theme';
 
 function Shell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -27,7 +28,13 @@ function Shell({ children }: { children: React.ReactNode }) {
       <Navigation />
       <Box
         component="main"
-        sx={{ flex: 1, pt: isHome ? 0 : { xs: '62px', md: '74px' } }}
+        sx={{
+          flex: 1,
+          // Must track the Toolbar's own minHeight, including its short
+          // landscape case.
+          pt: isHome ? 0 : { xs: '62px', md: '74px' },
+          ...(!isHome && { [shortLandscape]: { pt: '52px' } }),
+        }}
       >
         {children}
       </Box>

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { Box, Button, Container, Stack, Typography } from '@mui/material';
 import CheckIcon from '@mui/icons-material/CheckCircleOutline';
 import PageHeader from '../components/ui/PageHeader';
+import { shortLandscape } from '../lib/theme';
 import Surface from '../components/ui/Surface';
 import VideoEmbed from '../components/ui/VideoEmbed';
 import { BOOKING_URL_TRACKED } from '../lib/site';
@@ -24,7 +25,10 @@ export default function AboutContent() {
         lead="We hope you enjoy your stay as much as we enjoy coming down here. This site doubles as the house manual, so keep it handy through the week."
       />
 
-      <Container maxWidth="lg" sx={{ py: { xs: 6, md: 9 } }}>
+      <Container
+        maxWidth="lg"
+        sx={{ py: { xs: 6, md: 9 }, [shortLandscape]: { py: 4 } }}
+      >
         <Box
           sx={{
             position: 'relative',

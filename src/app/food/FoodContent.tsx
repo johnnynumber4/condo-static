@@ -5,6 +5,7 @@ import SetMealIcon from '@mui/icons-material/SetMealOutlined';
 import RestaurantIcon from '@mui/icons-material/RestaurantOutlined';
 import SportsBarIcon from '@mui/icons-material/SportsBarOutlined';
 import PageHeader from '../components/ui/PageHeader';
+import { shortLandscape } from '../lib/theme';
 import PlaceCard, { type Place } from '../components/ui/PlaceCard';
 import Surface from '../components/ui/Surface';
 
@@ -147,7 +148,10 @@ export default function FoodContent() {
         lead="Myrtle Beach runs on all-you-can-eat seafood, but there is more to it than that. Here is the short list."
       />
 
-      <Container maxWidth="lg" sx={{ py: { xs: 6, md: 9 } }}>
+      <Container
+        maxWidth="lg"
+        sx={{ py: { xs: 6, md: 9 }, [shortLandscape]: { py: 4 } }}
+      >
         <Stack spacing={{ xs: 7, md: 10 }}>
           {categories.map((category) => (
             <Box key={category.id} id={category.id}>

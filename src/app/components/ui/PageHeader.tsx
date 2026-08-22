@@ -1,6 +1,7 @@
 'use client';
 import * as React from 'react';
 import { Box, Container, Typography } from '@mui/material';
+import { shortLandscape } from '../../lib/theme';
 
 /** Editorial masthead shared by every interior page. */
 export default function PageHeader({
@@ -23,6 +24,7 @@ export default function PageHeader({
         py: { xs: 6, md: 9 },
         position: 'relative',
         overflow: 'hidden',
+        [shortLandscape]: { py: 3.5 },
       }}
     >
       {/* soft sun-glow in the corner, purely decorative */}
@@ -50,7 +52,11 @@ export default function PageHeader({
         <Typography
           variant="h2"
           component="h1"
-          sx={{ fontSize: { xs: '2.25rem', md: '3.25rem' }, maxWidth: 760 }}
+          sx={{
+            fontSize: { xs: '2.25rem', md: '3.25rem' },
+            maxWidth: 760,
+            [shortLandscape]: { fontSize: '2rem' },
+          }}
         >
           {title}
         </Typography>
@@ -58,7 +64,12 @@ export default function PageHeader({
           <Typography
             variant="subtitle1"
             color="text.secondary"
-            sx={{ mt: 2.5, maxWidth: 620, fontSize: '1.1rem' }}
+            sx={{
+              mt: 2.5,
+              maxWidth: 620,
+              fontSize: '1.1rem',
+              [shortLandscape]: { mt: 1.5, fontSize: '1rem' },
+            }}
           >
             {lead}
           </Typography>

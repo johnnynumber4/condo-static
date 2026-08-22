@@ -22,6 +22,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import ColorModeToggle from '../ui/ColorModeToggle';
 import { BOOKING_URL_TRACKED, navItems, site } from '../../lib/site';
+import { shortLandscape } from '../../lib/theme';
 
 export default function Navigation() {
   const [open, setOpen] = React.useState(false);
@@ -114,7 +115,13 @@ export default function Navigation() {
           transition: 'background-color .3s, color .3s, border-color .3s',
         }}
       >
-        <Toolbar sx={{ gap: 1, minHeight: { xs: 62, md: 74 } }}>
+        <Toolbar
+          sx={{
+            gap: 1,
+            minHeight: { xs: 62, md: 74 },
+            [shortLandscape]: { minHeight: 52 },
+          }}
+        >
           <Box
             component={Link}
             href="/"

@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { Box, Container, Stack, Typography } from '@mui/material';
 import PageHeader from '../components/ui/PageHeader';
+import { shortLandscape } from '../lib/theme';
 import Surface from '../components/ui/Surface';
 import DirectionsButton from '../components/ui/DirectionsButton';
 
@@ -52,7 +53,10 @@ export default function GroceriesContent() {
         lead="Four options within a short drive, from a quick grab-and-go to the full weekly shop."
       />
 
-      <Container maxWidth="lg" sx={{ py: { xs: 6, md: 9 } }}>
+      <Container
+        maxWidth="lg"
+        sx={{ py: { xs: 6, md: 9 }, [shortLandscape]: { py: 4 } }}
+      >
         <Stack spacing={4}>
           {stores.map((store) => (
             <Surface

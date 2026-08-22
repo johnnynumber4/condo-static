@@ -5,6 +5,7 @@ import KeyIcon from '@mui/icons-material/VpnKeyOutlined';
 import BedIcon from '@mui/icons-material/KingBedOutlined';
 import InfoIcon from '@mui/icons-material/InfoOutlined';
 import PageHeader from '../components/ui/PageHeader';
+import { shortLandscape } from '../lib/theme';
 import Surface from '../components/ui/Surface';
 import DirectionsButton from '../components/ui/DirectionsButton';
 import VideoEmbed from '../components/ui/VideoEmbed';
@@ -73,7 +74,10 @@ export default function GuideContent() {
         lead="Short answers to the questions guests ask most, with a video where it helps."
       />
 
-      <Container maxWidth="lg" sx={{ py: { xs: 6, md: 9 } }}>
+      <Container
+        maxWidth="lg"
+        sx={{ py: { xs: 6, md: 9 }, [shortLandscape]: { py: 4 } }}
+      >
         <Surface
           interactive={false}
           sx={{

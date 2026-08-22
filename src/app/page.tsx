@@ -13,6 +13,7 @@ import Surface from './components/ui/Surface';
 import Gallery from './components/Gallery';
 import { BOOKING_URL_TRACKED, site } from './lib/site';
 import { heroPhoto } from './lib/gallery';
+import { shortLandscape } from './lib/theme';
 
 const paradiseMath = [
   {
@@ -77,6 +78,7 @@ export default function Home() {
           display: 'flex',
           alignItems: 'flex-end',
           color: '#fff',
+          [shortLandscape]: { minHeight: 'auto' },
         }}
       >
         <Image
@@ -98,7 +100,12 @@ export default function Home() {
         />
         <Container
           maxWidth="lg"
-          sx={{ position: 'relative', pb: { xs: 8, md: 12 }, pt: 18 }}
+          sx={{
+            position: 'relative',
+            pb: { xs: 8, md: 12 },
+            pt: 18,
+            [shortLandscape]: { pt: 11, pb: 5 },
+          }}
         >
           <Typography
             variant="overline"
@@ -112,6 +119,7 @@ export default function Home() {
               fontSize: { xs: '3rem', sm: '4rem', md: '5.5rem' },
               maxWidth: 900,
               textWrap: 'balance',
+              [shortLandscape]: { fontSize: '2.4rem' },
             }}
           >
             Your home away from home, right on the sand.
@@ -122,6 +130,7 @@ export default function Home() {
               maxWidth: 560,
               fontSize: { xs: '1.05rem', md: '1.2rem' },
               opacity: 0.92,
+              [shortLandscape]: { mt: 1.5, fontSize: '0.98rem' },
             }}
           >
             Two bedrooms, two balconies, five ways to swim and a two-minute walk
@@ -131,7 +140,7 @@ export default function Home() {
           <Stack
             direction={{ xs: 'column', sm: 'row' }}
             spacing={2}
-            sx={{ mt: 5 }}
+            sx={{ mt: 5, [shortLandscape]: { mt: 2.5 } }}
           >
             <Button
               variant="contained"
@@ -164,7 +173,10 @@ export default function Home() {
       </Box>
 
       {/* ------------------------------------------------------- 2 + 5 + 2 math */}
-      <Box component="section" sx={{ py: { xs: 7, md: 10 } }}>
+      <Box
+        component="section"
+        sx={{ py: { xs: 7, md: 10 }, [shortLandscape]: { py: 4.5 } }}
+      >
         <Container maxWidth="lg">
           <Typography
             variant="overline"
@@ -228,6 +240,7 @@ export default function Home() {
           bgcolor: 'background.paper',
           borderBlock: '1px solid',
           borderColor: 'divider',
+          [shortLandscape]: { py: 4.5 },
         }}
       >
         <Container maxWidth="lg">
@@ -295,13 +308,17 @@ export default function Home() {
       </Box>
 
       {/* ------------------------------------------------------------ closing cta */}
-      <Box component="section" sx={{ py: { xs: 7, md: 10 } }}>
+      <Box
+        component="section"
+        sx={{ py: { xs: 7, md: 10 }, [shortLandscape]: { py: 4.5 } }}
+      >
         <Container maxWidth="lg">
           <Box
             sx={{
               borderRadius: 4,
               px: { xs: 4, md: 8 },
               py: { xs: 6, md: 9 },
+              [shortLandscape]: { py: 4 },
               textAlign: 'center',
               color: '#fff',
               background:

@@ -8,6 +8,16 @@ import { createTheme } from '@mui/material/styles';
  * resolved by `InitColorSchemeScript` before first paint, so the guest's choice
  * persists across visits and there is no light-mode flash on load.
  */
+/**
+ * A phone held sideways is wide enough to match desktop breakpoints while
+ * being far too short for desktop vertical rhythm: a Pixel in landscape is
+ * about 923x340, so a 74px bar and a 52px heading fill the screen before any
+ * content appears. Breakpoints cannot see height, so anything that reserves
+ * significant vertical space compacts itself here.
+ */
+export const shortLandscape =
+  '@media (max-height: 560px) and (orientation: landscape)';
+
 export const tokens = {
   light: {
     sand: '#F7F3EC',

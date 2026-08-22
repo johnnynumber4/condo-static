@@ -7,6 +7,7 @@ import GolfCourseIcon from '@mui/icons-material/GolfCourseOutlined';
 import SportsBowlingIcon from '@mui/icons-material/SportsEsportsOutlined';
 import MapIcon from '@mui/icons-material/MapOutlined';
 import PageHeader from '../components/ui/PageHeader';
+import { shortLandscape } from '../lib/theme';
 import PlaceCard, { type Place } from '../components/ui/PlaceCard';
 
 type Category = {
@@ -260,7 +261,10 @@ export default function ActivitiesContent() {
         lead="Grouped by how far you have to go, starting with what you can reach on foot."
       />
 
-      <Container maxWidth="lg" sx={{ py: { xs: 6, md: 9 } }}>
+      <Container
+        maxWidth="lg"
+        sx={{ py: { xs: 6, md: 9 }, [shortLandscape]: { py: 4 } }}
+      >
         <Stack spacing={{ xs: 7, md: 10 }}>
           {categories.map((category) => (
             <Box key={category.id} id={category.id}>
