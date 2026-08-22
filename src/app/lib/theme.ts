@@ -4,7 +4,7 @@ import { createTheme } from '@mui/material/styles';
  * Warm coastal palette: sand and ink for the ground, ocean teal for actions,
  * sunset orange reserved for the things we most want guests to click.
  *
- * The theme is built on MUI's CSS-variable mode so the colour scheme is
+ * The theme is built on MUI's CSS-variable mode so the color scheme is
  * resolved by `InitColorSchemeScript` before first paint, so the guest's choice
  * persists across visits and there is no light-mode flash on load.
  */

@@ -43,7 +43,7 @@ const sections = [
     href: '/activities',
     icon: <ExploreIcon />,
     title: 'Activities',
-    body: 'Our favourite things to do, from the boardwalk to the golf courses.',
+    body: 'Our favorite things to do, from the boardwalk to the golf courses.',
   },
   {
     href: '/food',

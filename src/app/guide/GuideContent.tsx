@@ -26,14 +26,20 @@ const sections: Section[] = [
     body: (
       <>
         <Typography variant="body1" paragraph>
-          Use the side door on the left as you face the building. The first door
-          is the stairwell, and the elevator is right there beside it.
+          The front entrance is now open to all residents and guests, so you can
+          walk straight in the front of the building.
+        </Typography>
+        <Typography variant="body1" paragraph>
+          The side door on the left as you face the building works too, and it
+          is the shortest walk to the elevator: the first door is the stairwell,
+          and the elevator is right beside it. The video below shows that way
+          in.
         </Typography>
         <Typography variant="body1">
-          If you come in through the front door instead, note that the people at
-          the front desk work for the building rather than for us, so they will
-          not be able to help with the unit. Use the contact details from your
-          check-in message with any questions.
+          Whichever door you use, the people at the front desk work for the
+          building rather than for us, so they will not be able to help with the
+          unit. Use the contact details from your check-in message with any
+          questions.
         </Typography>
       </>
     ),

@@ -75,7 +75,7 @@ The first entry gets the wide featured tile and the rest fill in beside it.
 
 ## Design
 
-Colours and typography are defined once in `src/app/lib/theme.ts`. The palette
+Colors and typography are defined once in `src/app/lib/theme.ts`. The palette
 is sand and ink with ocean teal for links and actions, and sunset orange kept
 for the booking calls to action so they stand out.
 
@@ -111,6 +111,51 @@ Activities and Eat & Drink share one card (`PlaceCard`). A place looks like:
 `address` is optional. When it is there the card prints it and the directions
 button navigates to it; when it is missing the button falls back to the place
 name plus the town, so every place gets working directions either way.
+
+### Adding photos to places
+
+Each place takes an optional `image`, and cards without one simply have no
+banner, so photos can be added a few at a time:
+
+```ts
+image: {
+  src: '/photos/activities/boardwalk.jpg',
+  alt: 'The Myrtle Beach boardwalk on a clear morning',
+  credit: {
+    text: 'Jane Doe / Wikimedia Commons (CC BY-SA 4.0)',
+    url: 'https://commons.wikimedia.org/wiki/File:Example.jpg',
+  },
+},
+```
+
+Cards size to their own content, so a row that mixes photographed and
+un-photographed places still looks tidy. It looks best if you finish a whole
+category at a time.
+
+**`credit` is not optional in practice.** Most free-to-use photos are CC BY or
+CC BY-SA, and both require the credit to be shown next to the image. Public
+domain and CC0 photos do not, and for those you can leave `credit` off. Where
+you do set it, `text` should name the photographer and the licence.
+
+Good sources, in rough order of how safe they are to use:
+
+| Source                                             | Licence                                    | Attribution                                                                                              |
+| -------------------------------------------------- | ------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
+| [Wikimedia Commons](https://commons.wikimedia.org) | Varies per file, stated on the file page   | Usually required; has genuine photos of Brookgreen Gardens, Huntington Beach State Park and Myrtle Beach |
+| [Unsplash](https://unsplash.com)                   | Unsplash licence, free commercial use      | Not required, appreciated                                                                                |
+| [Pexels](https://pexels.com)                       | Pexels licence, free commercial use        | Not required                                                                                             |
+| [Openverse](https://openverse.org)                 | Searches CC-licensed images across sources | Per licence shown                                                                                        |
+
+Two things worth being careful about:
+
+- **Check the licence on the file page itself**, not the search results. On
+  Wikimedia Commons in particular it varies file by file.
+- **Do not label a stock photo as a specific business.** A generic beach photo
+  captioned as a named restaurant is misleading. Either use a photo genuinely
+  of that place, or keep the image generic enough that it reads as decoration.
+
+Images are served as-is (`images.unoptimized` is on in `next.config.ts`), so
+resize before committing: about 1200px wide is plenty for these cards.
 
 Every "Get directions" button on the site is the same component,
 `components/ui/DirectionsButton`, and every maps link is built by

@@ -8,7 +8,7 @@ import LightModeIcon from '@mui/icons-material/LightModeOutlined';
 
 /**
  * Toggles between light and dark, writing the choice to localStorage via
- * MUI's colour-scheme storage so it survives reloads.
+ * MUI's color-scheme storage so it survives reloads.
  */
 export default function ColorModeToggle({ sx }: { sx?: object }) {
   const { mode, systemMode, setMode } = useColorScheme();

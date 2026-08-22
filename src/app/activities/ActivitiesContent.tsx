@@ -45,7 +45,7 @@ const categories: Category[] = [
         name: 'Second Avenue Pier',
         note: 'Walking distance',
         description:
-          'Fishing rentals are available and no licence is required. Worth the walk for the views alone, and there is a restaurant at the end of it.',
+          'Fishing rentals are available and no license is required. Worth the walk for the views alone, and there is a restaurant at the end of it.',
         address: '110 N Ocean Blvd, Myrtle Beach, SC 29577',
       },
       {
@@ -93,7 +93,7 @@ const categories: Category[] = [
         name: 'Broadway at the Beach',
         note: 'Short drive',
         description:
-          'Over seventy shops with clothing, gifts, snacks and art, wrapped around a lake, plus attractions, restaurants and theatres if the weather turns.',
+          'Over seventy shops with clothing, gifts, snacks and art, wrapped around a lake, plus attractions, restaurants and theaters if the weather turns.',
         address: '1325 Celebrity Cir, Myrtle Beach, SC 29577',
       },
     ],
@@ -211,7 +211,7 @@ export default function ActivitiesContent() {
     <>
       <PageHeader
         eyebrow="Around the condo"
-        title="Our favourite things to do in Myrtle Beach."
+        title="Our favorite things to do in Myrtle Beach."
         lead="Grouped by how far you have to go, starting with what you can reach on foot."
       />
 
@@ -240,6 +240,7 @@ export default function ActivitiesContent() {
                   mt: 3.5,
                   display: 'grid',
                   gap: 3,
+                  alignItems: 'start',
                   // Two across, not three: these cards carry a paragraph
                   // plus an address, and three columns wrapped every title.
                   gridTemplateColumns: {

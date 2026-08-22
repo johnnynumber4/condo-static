@@ -172,6 +172,7 @@ export default function FoodContent() {
                   mt: 3.5,
                   display: 'grid',
                   gap: 3,
+                  alignItems: 'start',
                   // Two across, not three: these cards carry a paragraph
                   // plus an address, and three columns wrapped every title.
                   gridTemplateColumns: {
