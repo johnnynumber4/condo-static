@@ -17,3 +17,8 @@ declines, delete the file and drop the `image` field from its entry.
 
 Note that adding a credit does not make an unlicensed photo licensed. The
 `credit` field is for photos we have the right to use.
+
+Do not take photos from Google reviews or similar. Those belong to the
+individual reviewer rather than the venue, there is no practical way to ask
+them, and it is not something a credit line fixes. Ask the venue for a press
+image instead.
