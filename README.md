@@ -45,11 +45,11 @@ file, so you can edit the words without touching any layout:
   the `/booking` redirect.
 - **Photos**: `src/app/lib/gallery.ts`. `heroPhoto` is the big image on the
   home and hosts pages. `galleryPhotos` drives the "A look around" strip.
-- **Activities**: the `categories` array in
-  `src/app/activities/ActivitiesContent.tsx`. Each category holds a list of
-  places; add a place by adding an object to the right category's `places`.
-- **Restaurants and breweries**: the `categories` array in
-  `src/app/food/FoodContent.tsx`, same shape as activities.
+- **Activities**: `src/app/lib/activities.ts`. Each category holds a list of
+  places; add a place by adding an object to the right category's `places`,
+  including a unique `id`.
+- **Restaurants and breweries**: `src/app/lib/food.ts`, same shape as
+  activities.
 - **Grocery stores**: the `stores` array in
   `src/app/groceries/GroceriesContent.tsx`. `coordinates` is a
   `"latitude,longitude"` string and feeds both the map and the directions link.
@@ -164,6 +164,30 @@ puts the place name in its accessible label, which is what tells a screen
 reader which of a dozen identical buttons it is on. The condo's own address
 lives in `site.address` and powers the buttons in the footer and on the guide
 page.
+
+## Hiding a place from the site
+
+There is an unlisted settings page at `/admin` for switching individual
+Activities and Eat & Drink tiles off, for when somewhere closes or stops being
+worth recommending.
+
+It is password-protected. Set `ADMIN_PASSWORD` in the Vercel project settings
+(**not** `NEXT_PUBLIC_ADMIN_PASSWORD` — the prefix would ship it to the
+browser). Until that variable exists the page refuses everyone rather than
+letting everyone in, and the password is only ever compared on the server; the
+session cookie holds a value derived from it, never the password itself.
+
+The switches do not write to the live site. Flipping one gives you the new
+contents of `src/app/lib/visibility.ts`, which you copy over that file and
+commit; Vercel redeploys in about a minute. That keeps every change in git
+history, dated and revertable, and means there is no database to run.
+
+Hiding every place in a category removes the whole category, heading and all,
+rather than leaving an empty grid.
+
+Ids in that file come from `lib/activities.ts` and `lib/food.ts` and are
+deliberately separate from the display names, so renaming a place does not
+silently un-hide it.
 
 ## Dependencies and security
 

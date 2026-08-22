@@ -1,6 +1,6 @@
 // Bump this whenever the cached shell changes; the activate handler below
 // deletes every cache that does not match, which is what retires the old one.
-const CACHE_NAME = 'paradise252-v3';
+const CACHE_NAME = 'paradise252-v4';
 
 const PRECACHE_ASSETS = [
   '/',
@@ -54,6 +54,9 @@ self.addEventListener('fetch', (event) => {
 
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
+
+  // The owners' settings page is never cached, online or off.
+  if (url.pathname.startsWith('/admin')) return;
 
   // Pages are network-first so guests see content updates on their next
   // visit, with the cached copy as the offline fallback. Previously every

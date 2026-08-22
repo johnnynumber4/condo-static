@@ -6,33 +6,7 @@ import PlaceIcon from '@mui/icons-material/PlaceOutlined';
 import LaunchIcon from '@mui/icons-material/Launch';
 import Surface from './Surface';
 import DirectionsButton from './DirectionsButton';
-
-/**
- * Attribution for a photo. Most free-to-use licences (anything CC BY or
- * CC BY-SA) require the credit to be shown next to the image, so this is a
- * field rather than something buried in a comment.
- */
-export type PhotoCredit = {
-  /** e.g. "Jane Doe / Wikimedia Commons (CC BY-SA 4.0)" */
-  text: string;
-  /** Link back to the source page, where the licence requires it. */
-  url?: string;
-};
-
-export type Place = {
-  name: string;
-  /** Short orientation line: how far away it is, or what kind of place it is. */
-  note: string;
-  description: string;
-  /** Street address, shown on the card and used for the directions button. */
-  address?: string;
-  /**
-   * Optional photo. Cards without one simply have no banner, so the grid
-   * stays tidy while photos are added a few at a time.
-   */
-  image?: { src: string; alt: string; credit?: PhotoCredit };
-  links?: { text: string; url: string }[];
-};
+import type { Place } from '../../lib/places';
 
 export default function PlaceCard({ place }: { place: Place }) {
   // Every place gets directions. Without a street address on file we send
