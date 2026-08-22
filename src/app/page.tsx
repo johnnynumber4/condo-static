@@ -74,7 +74,7 @@ export default function Home() {
         component="section"
         sx={{
           position: 'relative',
-          minHeight: { xs: '92svh', md: '88svh' },
+          minHeight: { xs: '100dvh', md: '88svh' },
           display: 'flex',
           alignItems: 'flex-end',
           color: '#fff',
@@ -104,7 +104,7 @@ export default function Home() {
             position: 'relative',
             pb: { xs: 8, md: 12 },
             pt: 18,
-            [shortLandscape]: { pt: 11, pb: 5 },
+            [shortLandscape]: { pt: 8, pb: 3 },
           }}
         >
           <Typography
@@ -140,7 +140,7 @@ export default function Home() {
           <Stack
             direction={{ xs: 'column', sm: 'row' }}
             spacing={2}
-            sx={{ mt: 5, [shortLandscape]: { mt: 2.5 } }}
+            sx={{ mt: 5, [shortLandscape]: { mt: 2 } }}
           >
             <Button
               variant="contained"
@@ -169,6 +169,36 @@ export default function Home() {
               Meet your hosts
             </Button>
           </Stack>
+
+          {/* Guests who are already here land on this page too, and everything
+              above it is aimed at people deciding whether to book. */}
+          <Box
+            component={Link}
+            href="/guide"
+            sx={{
+              mt: 3.5,
+              // Inline rather than inline-flex: when this wraps on a narrow
+              // phone, flex left the arrow stranded on the right edge.
+              display: 'inline',
+              color: '#fff',
+              fontSize: { xs: '0.95rem', sm: '1rem' },
+              opacity: 0.85,
+              textDecoration: 'underline',
+              textUnderlineOffset: '4px',
+              textDecorationColor: 'rgba(255,255,255,0.45)',
+              '&:hover': { opacity: 1, textDecorationColor: '#fff' },
+              [shortLandscape]: { mt: 1.25 },
+            }}
+          >
+            Already staying with us? Open the guest{' '}
+            {/* bound together so the arrow can never wrap onto its own line */}
+            <Box component="span" sx={{ whiteSpace: 'nowrap' }}>
+              guide
+              <ArrowForwardIcon
+                sx={{ fontSize: 17, verticalAlign: '-3px', ml: 0.5 }}
+              />
+            </Box>
+          </Box>
         </Container>
       </Box>
 
