@@ -48,6 +48,12 @@ const categories: Category[] = [
         description:
           'Fishing rentals are available and no license is required. Worth the walk for the views alone, and there is a restaurant at the end of it.',
         address: '110 N Ocean Blvd, Myrtle Beach, SC 29577',
+        links: [
+          {
+            text: 'Pier info and restaurant',
+            url: 'https://secondavenuepier.com/',
+          },
+        ],
       },
       {
         name: "Captain Hook's Adventure Golf",
@@ -55,6 +61,12 @@ const categories: Category[] = [
         description:
           'Two eighteen-hole pirate courses, Hooks and Lost Boys, with a smoking skull entrance, a climbable pirate ship and waterfalls. Gentle enough for small children.',
         address: '2205 N Kings Hwy, Myrtle Beach, SC 29577',
+        links: [
+          {
+            text: 'Hours and rates',
+            url: 'https://myrtlebeachfamilygolf.com/captain-hooks/',
+          },
+        ],
         image: {
           src: '/photos/activities/captain-hooks.jpg',
           alt: "A crocodile in the water below the rock formations and waterfalls at Captain Hook's Adventure Golf",
@@ -66,6 +78,12 @@ const categories: Category[] = [
         description:
           'The famous one: 36 holes climbing an indoor-outdoor Atlantis mountain of caves, waterfalls and bridges, with ocean views from the upper level. Sink the 19th hole and you putt free for life.',
         address: '707 N Kings Hwy, Myrtle Beach, SC 29577',
+        links: [
+          {
+            text: 'Hours and rates',
+            url: 'https://www.mtatlanticusminotaurgoff.com/',
+          },
+        ],
       },
       {
         name: 'Broadway at the Beach',
@@ -73,6 +91,12 @@ const categories: Category[] = [
         description:
           'Over seventy shops with clothing, gifts, snacks and art, wrapped around a lake, plus attractions, restaurants and theaters if the weather turns. Around twenty-five minutes on foot heading inland, or five minutes in the car if you would rather not walk back in the heat.',
         address: '1325 Celebrity Cir, Myrtle Beach, SC 29577',
+        links: [
+          {
+            text: 'Shops, events and map',
+            url: 'https://www.broadwayatthebeach.com/',
+          },
+        ],
       },
       {
         name: 'PopStroke',
@@ -82,7 +106,7 @@ const categories: Category[] = [
         address: '1187 Celebrity Cir, Myrtle Beach, SC 29577',
         links: [
           {
-            text: 'popstroke.com',
+            text: 'Book a tee time',
             url: 'https://popstroke.com/venues/myrtle-beach/',
           },
         ],
@@ -95,7 +119,7 @@ const categories: Category[] = [
         address: '1181 Celebrity Cir, Myrtle Beach, SC 29577',
         links: [
           {
-            text: 'thehangout.com',
+            text: 'Menu, music and reservations',
             url: 'https://thehangout.com/myrtle-about/',
           },
         ],
@@ -137,7 +161,7 @@ const categories: Category[] = [
         },
         links: [
           {
-            text: 'medievaltimes.com',
+            text: 'Tickets and showtimes',
             url: 'https://www.medievaltimes.com/myrtle-beach',
           },
         ],
@@ -158,7 +182,7 @@ const categories: Category[] = [
         address: '2850 Robert Grissom Pkwy, Myrtle Beach, SC 29577',
         links: [
           {
-            text: 'Topgolf Myrtle Beach',
+            text: 'Book a bay',
             url: 'https://topgolf.com/us/myrtle-beach/',
           },
         ],
@@ -170,7 +194,7 @@ const categories: Category[] = [
           'Twenty-seven holes and an easy tee time to get, which makes it a good pick if you decided to play that morning.',
         links: [
           {
-            text: 'River Oaks Golf Club',
+            text: 'Tee times and rates',
             url: 'https://www.riveroaksgolf.com/',
           },
         ],
@@ -181,7 +205,7 @@ const categories: Category[] = [
         description:
           'Twenty-seven holes along the Intracoastal Waterway, and one of the closest good courses to the condo.',
         links: [
-          { text: 'Arrowhead Country Club', url: 'https://arrowheadcc.com/' },
+          { text: 'Tee times and rates', url: 'https://arrowheadcc.com/' },
         ],
       },
     ],
@@ -200,7 +224,7 @@ const categories: Category[] = [
         address: '1190 Farrow Pkwy, Myrtle Beach, SC 29577',
         links: [
           {
-            text: '810bowling.com',
+            text: 'Reserve a lane',
             url: 'https://810bowling.com/810-bowling-myrtle-beach-sc',
           },
         ],
@@ -211,6 +235,12 @@ const categories: Category[] = [
         description:
           'Twenty-four lanes plus an arcade of more than a hundred games, a multi-storey laser tag arena, axe throwing and a full bar with the game on. The most to do under one roof.',
         address: '600 Coastal Grand Cir, Myrtle Beach, SC 29577',
+        links: [
+          {
+            text: 'Reserve a lane',
+            url: 'https://starsandstrikes.com/locations/myrtle-beach-sc/',
+          },
+        ],
       },
       {
         name: "Guy Fieri's Downtown Flavortown",
@@ -218,6 +248,12 @@ const categories: Category[] = [
         description:
           'Opened in summer 2026 in the old anchor store: fourteen duckpin lanes, over a hundred arcade games, a tiki bar and a very large restaurant. Duckpin uses smaller balls and no finger holes, so children can actually bowl.',
         address: 'Myrtle Beach Mall, 10177 N Kings Hwy, Myrtle Beach, SC 29572',
+        links: [
+          {
+            text: 'Menu, bowling and arcade',
+            url: 'https://downtownflavortownmyrtlebeach.com/',
+          },
+        ],
       },
     ],
   },
@@ -233,6 +269,9 @@ const categories: Category[] = [
         description:
           'A half-mile boardwalk over the salt marsh with eight waterfront restaurants along it: Wahoo’s, Drunken Jack’s, Bovine’s, Creek Ratz and more, most with live music and a deck facing the sunset. Go for an early dinner and stay for the light.',
         address: 'MarshWalk, Murrells Inlet, SC 29576',
+        links: [
+          { text: 'Restaurants and live music', url: 'https://marshwalk.com/' },
+        ],
       },
       {
         name: 'Brookgreen Gardens',
@@ -240,6 +279,9 @@ const categories: Category[] = [
         description:
           'The country’s first public sculpture garden, with the largest collection of American figurative sculpture anywhere outdoors, set in themed gardens with a lowcountry zoo and trails. Quieter than anything else on this list.',
         address: '1931 Brookgreen Dr, Murrells Inlet, SC 29576',
+        links: [
+          { text: 'Tickets and hours', url: 'https://www.brookgreen.org/' },
+        ],
       },
       {
         name: 'Huntington Beach State Park',
@@ -247,6 +289,12 @@ const categories: Category[] = [
         description:
           'Undeveloped beach, a saltmarsh boardwalk and some of the best birding on the coast, plus Atalaya, the old Moorish-style winter home on the dunes. Easy to pair with Brookgreen in one day.',
         address: '16148 Ocean Hwy, Murrells Inlet, SC 29576',
+        links: [
+          {
+            text: 'Park hours and admission',
+            url: 'https://southcarolinaparks.com/huntington-beach',
+          },
+        ],
       },
     ],
   },
