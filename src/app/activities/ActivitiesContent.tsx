@@ -27,7 +27,7 @@ const categories: Category[] = [
     places: [
       {
         name: 'The Boardwalk',
-        note: 'Two blocks south',
+        note: 'A promenade walk away',
         description:
           'Starts at 14th Avenue N and runs under three miles round trip, perfect for a sunrise walk or run. Pull up the live cams and see if you can spot your family on the beach.',
         address: 'Myrtle Beach Boardwalk, Myrtle Beach, SC',
@@ -224,7 +224,7 @@ const categories: Category[] = [
   {
     id: 'day-trips',
     title: 'Worth the drive',
-    blurb: 'Half a day south, and a different side of the coast.',
+    blurb: 'A day trip south, and a different look at the Coast.',
     icon: <MapIcon />,
     places: [
       {
