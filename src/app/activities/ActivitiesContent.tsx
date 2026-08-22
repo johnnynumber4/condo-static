@@ -54,6 +54,10 @@ const categories: Category[] = [
         description:
           'Two eighteen-hole pirate courses, Hooks and Lost Boys, with a smoking skull entrance, a climbable pirate ship and waterfalls. Gentle enough for small children.',
         address: '2205 N Kings Hwy, Myrtle Beach, SC 29577',
+        image: {
+          src: '/photos/activities/captain-hooks.jpg',
+          alt: "A crocodile in the water below the rock formations and waterfalls at Captain Hook's Adventure Golf",
+        },
       },
       {
         name: 'Mt. Atlanticus Minotaur Golf',
@@ -69,6 +73,32 @@ const categories: Category[] = [
           'Over seventy shops with clothing, gifts, snacks and art, wrapped around a lake, plus attractions, restaurants and theaters if the weather turns. Around twenty-five minutes on foot heading inland, or five minutes in the car if you would rather not walk back in the heat.',
         address: '1325 Celebrity Cir, Myrtle Beach, SC 29577',
       },
+      {
+        name: 'PopStroke',
+        note: 'At Broadway at the Beach',
+        description:
+          'Two eighteen-hole putting courses designed with Tiger Woods and built by TaylorMade, plus a rooftop bar, a family restaurant and an ice cream parlor. Smoother and more grown-up than the pirate courses, and you can eat and drink while you play.',
+        address: '1187 Celebrity Cir, Myrtle Beach, SC 29577',
+        links: [
+          {
+            text: 'popstroke.com',
+            url: 'https://popstroke.com/venues/myrtle-beach/',
+          },
+        ],
+      },
+      {
+        name: 'The Hangout',
+        note: 'At Broadway at the Beach',
+        description:
+          'Live music on indoor and outdoor stages, firepits, courtyard games and a sand pile for the children, with seafood, burgers and tacos alongside. Somewhere to settle in for an afternoon rather than just a meal.',
+        address: '1181 Celebrity Cir, Myrtle Beach, SC 29577',
+        links: [
+          {
+            text: 'thehangout.com',
+            url: 'https://thehangout.com/myrtle-about/',
+          },
+        ],
+      },
     ],
   },
   {
@@ -83,6 +113,10 @@ const categories: Category[] = [
         description:
           'Dolly Parton’s pirate show: two full-sized ships battling in an indoor lagoon, with acrobatics, sword fights and pyrotechnics, plus a four-course feast you eat with your hands. Roughly an hour and a half.',
         address: '8907 N Kings Hwy, Myrtle Beach, SC 29572',
+        image: {
+          src: '/photos/activities/pirates-voyage.jpg',
+          alt: 'The Pirates Voyage theater building lit up at dusk',
+        },
         links: [
           {
             text: 'Showtimes and tickets',
@@ -95,6 +129,17 @@ const categories: Category[] = [
         note: 'Short drive',
         description:
           'A family-friendly feast and tournament in the style of an 11th-century banquet: four courses while you cheer on one of six jousting knights. Book early, because it fills up.',
+        address: '2904 Fantasy Way, Myrtle Beach, SC 29579',
+        image: {
+          src: '/photos/activities/medieval-times.jpg',
+          alt: 'Two knights on horseback clashing with lances at Medieval Times, splinters flying',
+        },
+        links: [
+          {
+            text: 'medievaltimes.com',
+            url: 'https://www.medievaltimes.com/myrtle-beach',
+          },
+        ],
       },
     ],
   },
