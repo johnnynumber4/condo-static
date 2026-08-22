@@ -1,6 +1,7 @@
-const CACHE_NAME = 'paradise252-v1';
+// Bump this whenever the cached shell changes; the activate handler below
+// deletes every cache that does not match, which is what retires the old one.
+const CACHE_NAME = 'paradise252-v3';
 
-// Add whichever assets you want to pre-cache here
 const PRECACHE_ASSETS = [
   '/',
   '/manifest.json',
@@ -10,67 +11,90 @@ const PRECACHE_ASSETS = [
   '/about',
   '/guide',
   '/activities',
+  '/food',
+  '/groceries',
   '/info',
-  '/guestbook',
-  '/groceries'
 ];
 
-// Install event - precache all essential resources
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(PRECACHE_ASSETS);
-    })
+    caches
+      .open(CACHE_NAME)
+      // A single failed asset would reject the whole addAll, so cache them
+      // individually and tolerate misses.
+      .then((cache) =>
+        Promise.all(
+          PRECACHE_ASSETS.map((asset) =>
+            cache.add(asset).catch(() => undefined)
+          )
+        )
+      )
   );
-  self.skipWaiting(); // Ensure new service worker takes over immediately
+  self.skipWaiting();
 });
 
-// Fetch event - serve from cache first, then network
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      // Return cached response if found
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-
-      // Otherwise fetch from network
-      return fetch(event.request)
-        .then((response) => {
-          // Don't cache if not a success response
-          if (!response || response.status !== 200 || response.type !== 'basic') {
-            return response;
-          }
-
-          // Cache the network response for future
-          const responseToCache = response.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            if (event.request.method === 'GET') {
-              cache.put(event.request, responseToCache);
-            }
-          });
-
-          return response;
-        })
-        .catch(() => {
-          // Return a fallback page if offline and page not in cache
-          if (event.request.mode === 'navigate') {
-            return caches.match('/');
-          }
-        });
-    })
-  );
-});
-
-// Activate event - clean up old caches
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames
-          .filter((name) => name !== CACHE_NAME)
-          .map((name) => caches.delete(name))
-      );
+    caches
+      .keys()
+      .then((names) =>
+        Promise.all(
+          names
+            .filter((name) => name !== CACHE_NAME)
+            .map((name) => caches.delete(name))
+        )
+      )
+      .then(() => self.clients.claim())
+  );
+});
+
+self.addEventListener('fetch', (event) => {
+  const { request } = event;
+  if (request.method !== 'GET') return;
+
+  const url = new URL(request.url);
+  if (url.origin !== self.location.origin) return;
+
+  // Pages are network-first so guests see content updates on their next
+  // visit, with the cached copy as the offline fallback. Previously every
+  // response was served cache-first, which pinned installed devices to
+  // whatever HTML they happened to fetch first.
+  if (request.mode === 'navigate') {
+    event.respondWith(
+      fetch(request)
+        .then((response) => {
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
+          return response;
+        })
+        .catch(() =>
+          caches
+            .match(request)
+            .then((cached) => cached || caches.match('/'))
+            .then(
+              (cached) =>
+                cached ||
+                new Response('You are offline.', {
+                  status: 503,
+                  headers: { 'Content-Type': 'text/plain' },
+                })
+            )
+        )
+    );
+    return;
+  }
+
+  // Static assets are content-hashed, so cache-first is safe and fast.
+  event.respondWith(
+    caches.match(request).then((cached) => {
+      if (cached) return cached;
+      return fetch(request).then((response) => {
+        if (response && response.status === 200 && response.type === 'basic') {
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
+        }
+        return response;
+      });
     })
   );
-}); 
+});

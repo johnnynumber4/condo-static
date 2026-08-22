@@ -1,70 +1,76 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import * as React from 'react';
 import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
 import Snackbar from '@mui/material/Snackbar';
-import { GetApp as GetAppIcon } from '@mui/icons-material';
+import CloseIcon from '@mui/icons-material/Close';
+import GetAppIcon from '@mui/icons-material/GetApp';
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
   userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>;
 }
 
+/**
+ * Offers the "add to home screen" prompt so guests can keep the manual on
+ * their phone for the week.
+ */
 export default function InstallPWA() {
-  const [deferredPrompt, setDeferredPrompt] =
-    useState<BeforeInstallPromptEvent | null>(null);
-  const [showInstallButton, setShowInstallButton] = useState(false);
+  const [prompt, setPrompt] = React.useState<BeforeInstallPromptEvent | null>(
+    null
+  );
+  const [dismissed, setDismissed] = React.useState(false);
 
-  useEffect(() => {
-    window.addEventListener('beforeinstallprompt', (e) => {
-      // Prevent Chrome 67 and earlier from automatically showing the prompt
+  React.useEffect(() => {
+    const onBeforeInstall = (e: Event) => {
       e.preventDefault();
-      // Stash the event so it can be triggered later
-      setDeferredPrompt(e as BeforeInstallPromptEvent);
-      setShowInstallButton(true);
-    });
+      setPrompt(e as BeforeInstallPromptEvent);
+    };
+    const onInstalled = () => setPrompt(null);
 
-    window.addEventListener('appinstalled', () => {
-      // Clear the deferredPrompt so it can be garbage collected
-      setDeferredPrompt(null);
-      setShowInstallButton(false);
-    });
+    window.addEventListener('beforeinstallprompt', onBeforeInstall);
+    window.addEventListener('appinstalled', onInstalled);
+    return () => {
+      window.removeEventListener('beforeinstallprompt', onBeforeInstall);
+      window.removeEventListener('appinstalled', onInstalled);
+    };
   }, []);
 
-  const handleInstallClick = async () => {
-    if (!deferredPrompt) return;
-
-    // Show the install prompt
-    deferredPrompt.prompt();
-    // Wait for the user to respond to the prompt
-    const { outcome } = await deferredPrompt.userChoice;
-
-    if (outcome === 'accepted') {
-      console.log('User accepted the install prompt');
-    } else {
-      console.log('User dismissed the install prompt');
-    }
-
-    setDeferredPrompt(null);
-    setShowInstallButton(false);
+  const install = async () => {
+    if (!prompt) return;
+    await prompt.prompt();
+    await prompt.userChoice;
+    setPrompt(null);
   };
 
-  if (!showInstallButton) return null;
+  if (!prompt || dismissed) return null;
 
   return (
     <Snackbar
-      open={true}
-      message="Install Paradise 252 app"
-      action={
-        <Button
-          color="primary"
-          size="small"
-          onClick={handleInstallClick}
-          startIcon={<GetAppIcon />}
-        >
-          Install
-        </Button>
-      }
+      open
+      message="Keep the guest manual on your home screen"
       anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      action={
+        <>
+          <Button
+            color="secondary"
+            size="small"
+            onClick={install}
+            startIcon={<GetAppIcon />}
+          >
+            Install
+          </Button>
+          <IconButton
+            size="small"
+            color="inherit"
+            aria-label="Dismiss"
+            onClick={() => setDismissed(true)}
+          >
+            <CloseIcon fontSize="small" />
+          </IconButton>
+        </>
+      }
+      sx={{ '& .MuiSnackbarContent-root': { borderRadius: 3 } }}
     />
   );
 }
