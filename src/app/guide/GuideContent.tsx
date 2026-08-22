@@ -36,10 +36,7 @@ const sections: Section[] = [
           in.
         </Typography>
         <Typography variant="body1">
-          Whichever door you use, the people at the front desk work for the
-          building rather than for us, so they will not be able to help with the
-          unit. Use the contact details from your check-in message with any
-          questions.
+          Use the contact details from your check-in message with any questions.
         </Typography>
       </>
     ),

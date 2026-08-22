@@ -138,8 +138,7 @@ export default function InfoContent() {
           sx={{ mt: 5, textAlign: 'center' }}
         >
           Questions about any of this? Use the contact details from your
-          check-in message. The building&apos;s front desk cannot help with the
-          unit.
+          check-in message.
         </Typography>
       </Container>
     </>

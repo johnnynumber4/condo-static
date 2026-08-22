@@ -72,9 +72,8 @@ export default function AboutContent() {
             </Typography>
             <Typography variant="body1" color="text.secondary" paragraph>
               Codes for the building, the pool area and unit 252 are all sent to
-              you at check-in. The front desk in the lobby belongs to the
-              building, not to us, so bring any questions straight to the
-              contact details in your check-in message.
+              you at check-in. Use the contact details from that message with
+              any questions.
             </Typography>
             <Button
               variant="contained"
