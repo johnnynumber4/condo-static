@@ -9,6 +9,63 @@ export type FoodCategory = {
 
 export const foodCategories: FoodCategory[] = [
   {
+    id: 'breakfast',
+    title: 'Breakfast',
+    blurb: 'Where to start the day, nearest to the condo first.',
+    places: [
+      {
+        id: 'sea-captains-house',
+        name: "Sea Captain's House",
+        note: 'A mile north, on the ocean',
+        description:
+          'A 1930s beach house that became a restaurant in 1962, and every table has the Atlantic in the window. Crab cake Benedict and a crabmeat, shrimp and feta omelette on the breakfast menu. The closest of these to the condo, and you can walk it up the beach on a nice morning.',
+        address: '3002 N Ocean Blvd, Myrtle Beach, SC 29577',
+        links: [
+          { text: 'Menu and hours', url: 'https://www.seacaptains.com/' },
+        ],
+      },
+      {
+        id: 'johnny-ds-waffles-and-benedicts',
+        name: "Johnny D's Waffles and Benedicts",
+        note: 'Five minutes away',
+        description:
+          'The waffles are the point: classic, cinnamon roll, banana split. The Benedicts are the other half of the name and just as good. Chef-owned rather than a chain, and busy enough on a weekend morning that it is worth going early.',
+        address: '3301 N Kings Hwy, Myrtle Beach, SC 29577',
+        links: [
+          {
+            text: 'Menu and locations',
+            url: 'https://www.johnnydswaffles.com/',
+          },
+        ],
+      },
+      {
+        id: 'eggs-up-grill',
+        name: 'Eggs Up Grill',
+        note: 'Ten minutes away',
+        description:
+          'The dependable one. A long menu of omelettes, benedicts and pancakes, quick service, and easy with children who want something plain while everyone else orders properly.',
+        address: '1289 38th Ave N, Myrtle Beach, SC 29577',
+        links: [
+          {
+            text: 'Menu and hours',
+            url: 'https://locations.eggsupgrill.com/sc/myrtle-beach/4/',
+          },
+        ],
+      },
+      {
+        id: 'croissants-bistro-bakery',
+        name: 'Croissants Bistro & Bakery',
+        note: 'Fifteen minutes north',
+        description:
+          'A real bakery as well as a brunch room, running since 1995. Pastries, fresh-roasted coffee and mimosas, and a calmer room than a pancake house. Worth the drive if you want brunch rather than breakfast.',
+        address: '8014 N Kings Hwy, Myrtle Beach, SC 29572',
+        links: [
+          { text: 'Menu and reservations', url: 'https://croissants.net/' },
+        ],
+      },
+    ],
+  },
+  {
     id: 'buffets',
     title: 'All you can eat',
     blurb: 'Calabash-style seafood is the local institution. Come hungry.',

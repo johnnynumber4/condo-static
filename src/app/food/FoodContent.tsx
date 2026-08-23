@@ -1,6 +1,7 @@
 'use client';
 import * as React from 'react';
 import { Box, Container, Stack, Typography } from '@mui/material';
+import FreeBreakfastIcon from '@mui/icons-material/FreeBreakfastOutlined';
 import SetMealIcon from '@mui/icons-material/SetMealOutlined';
 import RestaurantIcon from '@mui/icons-material/RestaurantOutlined';
 import SportsBarIcon from '@mui/icons-material/SportsBarOutlined';
@@ -8,6 +9,7 @@ import PageHeader from '../components/ui/PageHeader';
 import { shortLandscape } from '../lib/theme';
 
 const ICONS: Record<string, React.ReactNode> = {
+  breakfast: <FreeBreakfastIcon />,
   buffets: <SetMealIcon />,
   local: <RestaurantIcon />,
   breweries: <SportsBarIcon />,
