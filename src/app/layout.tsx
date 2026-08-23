@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from 'next';
 import InitColorSchemeScript from '@mui/material/InitColorSchemeScript';
+import { Analytics } from '@vercel/analytics/next';
 import ClientLayout from './ClientLayout';
+import StructuredData from './components/StructuredData';
 import { fraunces, inter } from './lib/fonts';
 import { site } from './lib/site';
 import { tokens } from './lib/theme';
@@ -14,6 +16,9 @@ export const metadata: Metadata = {
   },
   description: site.description,
   applicationName: site.name,
+  // Resolved against metadataBase. Stops the vercel.app address and the real
+  // domain being counted as two copies of every page.
+  alternates: { canonical: '/' },
   manifest: '/manifest.json',
   icons: { icon: '/sun.svg', apple: '/icons/icon-192x192.png' },
   openGraph: {
@@ -60,7 +65,9 @@ export default function RootLayout({
     >
       <body>
         <InitColorSchemeScript attribute="data" defaultMode="system" />
+        <StructuredData />
         <ClientLayout>{children}</ClientLayout>
+        <Analytics />
       </body>
     </html>
   );

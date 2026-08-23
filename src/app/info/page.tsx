@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'House Rules',
   description:
     'The house rules for Paradise 252: no smoking, no grilling, a six-person maximum, and the check-out policy.',
+  alternates: { canonical: '/info' },
 };
 
 export default function InfoPage() {

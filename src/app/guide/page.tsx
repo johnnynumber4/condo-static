@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Condo Guide',
   description:
     'How to get into the building, where the elevator is, the bonus bed, and the codes you will need at Paradise 252.',
+  alternates: { canonical: '/guide' },
 };
 
 export default function GuidePage() {

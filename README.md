@@ -211,6 +211,26 @@ a URL in `booking.ts`, and the switch on in the admin page. A channel that is
 off, or has no URL, also 404s at `/go/<channel>` rather than only being
 unlinked, so the link cannot be reached by guessing it.
 
+## SEO and analytics
+
+- `src/app/sitemap.ts` lists the seven content pages. `/booking`, `/go/*` and
+  `/admin` are deliberately absent: two are outbound redirects and one is the
+  owners' page.
+- `src/app/robots.ts` disallows those same paths and points at the sitemap.
+- `src/app/components/StructuredData.tsx` marks the site up as a schema.org
+  `VacationRental`. Everything it claims is also stated on the site: the
+  six-guest maximum comes from the house rules, the amenities from the
+  "2 + 5 + 2" section. Do not add a claim here that a guest could arrive and
+  find untrue.
+- Every page sets a canonical URL, so the real domain and the `vercel.app`
+  address are not counted as two copies of the site.
+- `@vercel/analytics` is loaded in the root layout.
+
+All of this resolves against `site.url` in `src/app/lib/site.ts`. **That domain
+has to actually serve the site**: canonical tags pointing at a domain that does
+not resolve are worse than none. Add the domain in the Vercel project settings
+and point DNS at it before relying on any of the above.
+
 ## Dependencies and security
 
 `pnpm audit` should report zero advisories. Two things keep it there:

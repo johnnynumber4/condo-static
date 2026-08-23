@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Eat & Drink',
   description:
     'Breakfast, Calabash seafood buffets, Cafe Old Vienna, the Murrells Inlet MarshWalk and the local breweries: where to eat near Paradise 252.',
+  alternates: { canonical: '/food' },
 };
 
 export default function FoodPage() {

@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Activities',
   description:
     'The boardwalk, Second Avenue Pier, golf, Medieval Times and Broadway at the Beach: our favorite things to do near Paradise 252.',
+  alternates: { canonical: '/activities' },
 };
 
 export default function ActivitiesPage() {

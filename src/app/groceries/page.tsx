@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Groceries',
   description:
     'Walmart Neighborhood Market, Piggly Wiggly, Food Lion and Costco: the grocery stores nearest Paradise 252, with maps and directions.',
+  alternates: { canonical: '/groceries' },
 };
 
 export default function GroceriesPage() {
