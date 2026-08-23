@@ -21,13 +21,22 @@ export const metadata: Metadata = {
     siteName: site.fullName,
     title: `${site.fullName} · ${site.tagline}`,
     description: site.description,
-    images: [{ url: '/sunset-toast.jpg', width: 1200, height: 630 }],
+    // A real 1200x630 file. The hero photo is 1000x750, so declaring it at
+    // 1200x630 had every share crop the subject out.
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Sunset over the ocean from the balcony at Paradise 252',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: `${site.fullName} · ${site.tagline}`,
     description: site.description,
-    images: ['/sunset-toast.jpg'],
+    images: ['/og-image.jpg'],
   },
 };
 
