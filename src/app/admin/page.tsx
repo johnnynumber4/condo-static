@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import { Alert, Container } from '@mui/material';
 import { activityCategories } from '../lib/activities';
 import { foodCategories } from '../lib/food';
-import { hiddenPlaceIds } from '../lib/visibility';
+import { bookingChannels } from '../lib/booking';
+import { hiddenFeatureIds, hiddenPlaceIds } from '../lib/visibility';
 import { isAuthenticated, isConfigured } from './auth';
 import SignInForm from './SignInForm';
 import AdminPanel from './AdminPanel';
@@ -57,5 +58,31 @@ export default async function AdminPage() {
     },
   ];
 
-  return <AdminPanel sections={sections} hidden={hiddenPlaceIds} />;
+  const features = [
+    {
+      id: 'booking-channels',
+      title: 'Booking buttons',
+      items: bookingChannels
+        .filter((c) => c.id !== 'hosteeva')
+        .map((c) => ({
+          id: `channel-${c.id}`,
+          name: c.label,
+          // A channel with no listing URL cannot be shown whatever the switch
+          // says, so the panel has to say so rather than looking broken.
+          note: c.url
+            ? 'Shown beside Book a Stay'
+            : 'No listing URL set yet, so this stays hidden',
+          disabled: !c.url,
+        })),
+    },
+  ];
+
+  return (
+    <AdminPanel
+      sections={sections}
+      features={features}
+      hidden={hiddenPlaceIds}
+      hiddenFeatures={hiddenFeatureIds}
+    />
+  );
 }

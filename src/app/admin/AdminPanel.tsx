@@ -25,41 +25,72 @@ type Section = {
   href: string;
   categories: PanelCategory[];
 };
+type FeatureItem = {
+  id: string;
+  name: string;
+  note: string;
+  disabled?: boolean;
+};
+type FeatureGroup = { id: string; title: string; items: FeatureItem[] };
 
-/** Renders the exact contents of lib/visibility.ts for a given hidden set. */
-function configFile(hidden: string[]) {
-  const list = [...hidden].sort();
-  const entries = list.length
-    ? '\n' + list.map((id) => `  '${id}',`).join('\n') + '\n'
-    : '';
+/** Renders the exact contents of lib/visibility.ts for a given state. */
+function configFile(hidden: string[], hiddenFeatures: string[]) {
+  const list = (ids: string[]) => {
+    const sorted = [...ids].sort();
+    return sorted.length
+      ? '\n' + sorted.map((id) => `  '${id}',`).join('\n') + '\n'
+      : '';
+  };
   return `/**
- * Places hidden from the public site.
+ * What the public site shows.
  *
  * This is the file the admin page at /admin edits. Flip the switches there,
  * copy what it gives you over this file, and commit: the next deploy hides or
- * restores the tiles for everyone. Keeping it in git means every change is
- * dated, attributable and one revert away from being undone.
+ * restores things for everyone. Keeping it in git means every change is dated,
+ * attributable and one revert away from being undone.
  *
- * Entries are place ids from \`lib/activities.ts\` and \`lib/food.ts\`, not names,
- * so renaming a place does not silently un-hide it.
+ * Entries are ids, never display names, so renaming something does not
+ * silently un-hide it.
  */
-export const hiddenPlaceIds: string[] = [${entries}];
+
+/** Place ids from \`lib/activities.ts\` and \`lib/food.ts\`. */
+export const hiddenPlaceIds: string[] = [${list(hidden)}];
+
+/**
+ * Feature ids. Booking channels are \`channel-<id>\` from \`lib/booking.ts\`.
+ *
+ * Airbnb and Booking.com start hidden: the listings do not exist yet, and a
+ * booking button that goes nowhere costs a real reservation.
+ */
+export const hiddenFeatureIds: string[] = [${list(hiddenFeatures)}];
 
 /** Whether a place should be rendered on the public site. */
 export function isVisible(id: string) {
   return !hiddenPlaceIds.includes(id);
+}
+
+/** Whether a feature should be rendered on the public site. */
+export function isFeatureVisible(id: string) {
+  return !hiddenFeatureIds.includes(id);
 }
 `;
 }
 
 export default function AdminPanel({
   sections,
+  features,
   hidden: initialHidden,
+  hiddenFeatures: initialHiddenFeatures,
 }: {
   sections: Section[];
+  features: FeatureGroup[];
   hidden: string[];
+  hiddenFeatures: string[];
 }) {
   const [hidden, setHidden] = React.useState<string[]>(initialHidden);
+  const [hiddenFeatures, setHiddenFeatures] = React.useState<string[]>(
+    initialHiddenFeatures
+  );
   const [copied, setCopied] = React.useState(false);
 
   const toggle = (id: string) =>
@@ -67,11 +98,18 @@ export default function AdminPanel({
       prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
     );
 
-  const dirty =
-    JSON.stringify([...hidden].sort()) !==
-    JSON.stringify([...initialHidden].sort());
+  const toggleFeature = (id: string) =>
+    setHiddenFeatures((prev) =>
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+    );
 
-  const file = configFile(hidden);
+  const same = (a: string[], b: string[]) =>
+    JSON.stringify([...a].sort()) === JSON.stringify([...b].sort());
+  const dirty =
+    !same(hidden, initialHidden) ||
+    !same(hiddenFeatures, initialHiddenFeatures);
+
+  const file = configFile(hidden, hiddenFeatures);
 
   const copy = async () => {
     try {
@@ -176,6 +214,56 @@ export default function AdminPanel({
                 })}
               </Box>
             ))}
+          </Surface>
+        </Box>
+      ))}
+
+      {features.map((group) => (
+        <Box key={group.id} sx={{ mb: 5 }}>
+          <Typography variant="h6" sx={{ mb: 2 }}>
+            {group.title}
+          </Typography>
+          <Surface interactive={false} sx={{ p: 0, overflow: 'hidden' }}>
+            {group.items.map((item, i) => {
+              const off = hiddenFeatures.includes(item.id);
+              return (
+                <Box key={item.id}>
+                  {i > 0 && <Divider />}
+                  <Stack
+                    direction="row"
+                    alignItems="center"
+                    spacing={2}
+                    sx={{ px: 3, py: 1.75 }}
+                  >
+                    <Box sx={{ flex: 1, minWidth: 0 }}>
+                      <Typography
+                        sx={{
+                          fontWeight: 500,
+                          color:
+                            off || item.disabled
+                              ? 'text.disabled'
+                              : 'text.primary',
+                        }}
+                      >
+                        {item.name}
+                      </Typography>
+                      <Typography variant="caption" color="text.secondary">
+                        {item.note}
+                      </Typography>
+                    </Box>
+                    {item.disabled && <Chip label="No URL" size="small" />}
+                    <Switch
+                      checked={!off}
+                      disabled={item.disabled}
+                      onChange={() => toggleFeature(item.id)}
+                      inputProps={{
+                        'aria-label': `Show the ${item.name} booking button`,
+                      }}
+                    />
+                  </Stack>
+                </Box>
+              );
+            })}
           </Surface>
         </Box>
       ))}

@@ -185,9 +185,31 @@ history, dated and revertable, and means there is no database to run.
 Hiding every place in a category removes the whole category, heading and all,
 rather than leaving an empty grid.
 
+The same page also switches the Airbnb and Booking.com buttons on and off,
+under "Booking buttons".
+
 Ids in that file come from `lib/activities.ts` and `lib/food.ts` and are
 deliberately separate from the display names, so renaming a place does not
 silently un-hide it.
+
+## Booking links and campaigns
+
+Every booking button points at an internal `/go/<channel>` link rather than
+straight out to the channel. That indirection lets us tag traffic per channel,
+change a listing URL in one place, and attach a campaign to a link without
+touching a page.
+
+- Channels live in `src/app/lib/booking.ts`.
+- `/go/hosteeva` redirects with `utm_source=paradise252&utm_medium=website`.
+- `/go/hosteeva?c=spring-2026` adds `utm_campaign=spring-2026`, so a flyer, an
+  email or an Instagram bio link can each be measured separately in the
+  channel's own analytics.
+
+Airbnb and Booking.com are defined but have no listing URL and are switched
+off in `lib/visibility.ts`. Two things have to be true before either appears:
+a URL in `booking.ts`, and the switch on in the admin page. A channel that is
+off, or has no URL, also 404s at `/go/<channel>` rather than only being
+unlinked, so the link cannot be reached by guessing it.
 
 ## Dependencies and security
 

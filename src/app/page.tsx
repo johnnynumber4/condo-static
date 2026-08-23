@@ -14,6 +14,15 @@ import Gallery from './components/Gallery';
 import { BOOKING_URL_TRACKED, site } from './lib/site';
 import { heroPhoto } from './lib/gallery';
 import { shortLandscape } from './lib/theme';
+import BookingChannels from './components/BookingChannels';
+import { bookingChannels } from './lib/booking';
+import { isFeatureVisible } from './lib/visibility';
+
+// Hosteeva already has the primary button; these are the extra listings, and
+// only ones that are switched on AND have a URL are offered.
+const extraChannels = bookingChannels.filter(
+  (c) => c.id !== 'hosteeva' && c.url && isFeatureVisible(`channel-${c.id}`)
+);
 
 const paradiseMath = [
   {
@@ -169,6 +178,12 @@ export default function Home() {
               Meet your hosts
             </Button>
           </Stack>
+
+          <BookingChannels
+            channels={extraChannels}
+            onDark
+            sx={{ mt: 3.5, [shortLandscape]: { mt: 2 } }}
+          />
 
           {/* Guests who are already here land on this page too, and everything
               above it is aimed at people deciding whether to book. */}
@@ -381,6 +396,14 @@ export default function Home() {
             >
               Check Availability
             </Button>
+
+            {extraChannels.length > 0 && (
+              <BookingChannels
+                channels={extraChannels}
+                onDark
+                sx={{ mt: 4, display: 'inline-block', textAlign: 'left' }}
+              />
+            )}
           </Box>
         </Container>
       </Box>
