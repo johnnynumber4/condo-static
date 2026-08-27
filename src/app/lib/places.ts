@@ -34,5 +34,10 @@ export type Place = {
    * added a few at a time.
    */
   image?: { src: string; alt: string; credit?: PhotoCredit };
+  /**
+   * A short silent clip for the banner slot. Takes precedence over `image`
+   * when both are set; `poster` is what shows before it loads.
+   */
+  video?: { src: string; poster: string; alt: string };
   links?: { text: string; url: string }[];
 };

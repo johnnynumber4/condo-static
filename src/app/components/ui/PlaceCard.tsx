@@ -6,13 +6,14 @@ import PlaceIcon from '@mui/icons-material/PlaceOutlined';
 import LaunchIcon from '@mui/icons-material/Launch';
 import Surface from './Surface';
 import DirectionsButton from './DirectionsButton';
+import CardVideo from './CardVideo';
 import type { Place } from '../../lib/places';
 
 export default function PlaceCard({ place }: { place: Place }) {
   // Every place gets directions. Without a street address on file we send
   // the maps app the name and the town, which resolves for all of these.
   const destination = place.address ?? `${place.name}, Myrtle Beach, SC`;
-  const { image } = place;
+  const { image, video } = place;
 
   return (
     <Surface
@@ -24,7 +25,11 @@ export default function PlaceCard({ place }: { place: Place }) {
         flexDirection: 'column',
       }}
     >
-      {image && (
+      {video && (
+        <CardVideo src={video.src} poster={video.poster} alt={video.alt} />
+      )}
+
+      {!video && image && (
         <Box
           sx={{
             position: 'relative',

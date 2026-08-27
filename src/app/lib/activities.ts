@@ -176,6 +176,11 @@ export const activityCategories: ActivityCategory[] = [
         description:
           'Climate-controlled bays, food and drink at the tee, and a scoring system that makes it fun whether or not anyone in your group can actually play.',
         address: '2850 Robert Grissom Pkwy, Myrtle Beach, SC 29577',
+        video: {
+          src: '/video/topgolf.mp4',
+          poster: '/video/topgolf-poster.jpg',
+          alt: 'A young golfer teeing off in a Topgolf bay, with the target greens beyond',
+        },
         links: [
           {
             text: 'Book a bay',
@@ -248,6 +253,11 @@ export const activityCategories: ActivityCategory[] = [
         description:
           'Opened in summer 2026 in the old anchor store: fourteen duckpin lanes, over a hundred arcade games, a tiki bar and a very large restaurant. Duckpin uses smaller balls and no finger holes, so children can actually bowl.',
         address: 'Myrtle Beach Mall, 10177 N Kings Hwy, Myrtle Beach, SC 29572',
+        video: {
+          src: '/video/flavortown.mp4',
+          poster: '/video/flavortown-poster.jpg',
+          alt: 'The neon Flavortown sign above the duckpin bowling lanes',
+        },
         links: [
           {
             text: 'Menu, bowling and arcade',
