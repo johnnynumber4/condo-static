@@ -149,7 +149,7 @@ export const activityCategories: ActivityCategory[] = [
         address: '2904 Fantasy Way, Myrtle Beach, SC 29579',
         image: {
           src: '/photos/activities/medieval-times.jpg',
-          alt: 'Two knights on horseback clashing with lances at Medieval Times, splinters flying',
+          alt: 'A knight carrying a blue and gold banner rides across the arena at Medieval Times, with the queen on a white horse and the crowd behind',
         },
         links: [
           {
