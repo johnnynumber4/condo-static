@@ -16,12 +16,18 @@ const ICONS: Record<string, React.ReactNode> = {
 };
 import PlaceCard from '../components/ui/PlaceCard';
 import { foodCategories } from '../lib/food';
-import { isVisible } from '../lib/visibility';
+import { isVisible, orderPlaces } from '../lib/visibility';
 import Surface from '../components/ui/Surface';
 
 export default function FoodContent() {
   const categories = foodCategories
-    .map((c) => ({ ...c, places: c.places.filter((p) => isVisible(p.id)) }))
+    .map((c) => ({
+      ...c,
+      places: orderPlaces(
+        c.id,
+        c.places.filter((p) => isVisible(p.id))
+      ),
+    }))
     .filter((c) => c.places.length > 0);
 
   return (

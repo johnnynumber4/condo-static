@@ -185,6 +185,11 @@ history, dated and revertable, and means there is no database to run.
 Hiding every place in a category removes the whole category, heading and all,
 rather than leaving an empty grid.
 
+The arrows beside each place reorder the cards within their category. Only
+categories you actually reorder get written to `placeOrder`; everything else
+keeps the order it has in the data file, and a place missing from a listed
+category sorts to the end rather than vanishing into the middle.
+
 The same page also switches the Airbnb and Booking.com buttons on and off,
 under "Booking buttons".
 

@@ -67,7 +67,11 @@ export default function RootLayout({
         <InitColorSchemeScript attribute="data" defaultMode="system" />
         <StructuredData />
         <ClientLayout>{children}</ClientLayout>
-        <Analytics />
+        {/* The insights script is served by Vercel's edge, so anywhere else
+            it is a guaranteed 404. Rendering it only on Vercel keeps local
+            runs clean, which matters: a permanent console error trains you to
+            ignore console errors. */}
+        {process.env.VERCEL ? <Analytics /> : null}
       </body>
     </html>
   );

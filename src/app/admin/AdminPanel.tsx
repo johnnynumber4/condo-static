@@ -11,6 +11,9 @@ import {
   Switch,
   Typography,
 } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
+import ArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import ArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import ContentCopyIcon from '@mui/icons-material/ContentCopyOutlined';
 import CheckIcon from '@mui/icons-material/Check';
 import LaunchIcon from '@mui/icons-material/Launch';
@@ -34,7 +37,24 @@ type FeatureItem = {
 type FeatureGroup = { id: string; title: string; items: FeatureItem[] };
 
 /** Renders the exact contents of lib/visibility.ts for a given state. */
-function configFile(hidden: string[], hiddenFeatures: string[]) {
+function configFile(
+  hidden: string[],
+  hiddenFeatures: string[],
+  order: Record<string, string[]>
+) {
+  const entries = Object.entries(order);
+  const orderLiteral = entries.length
+    ? '{\n' +
+      entries
+        .map(
+          ([cat, ids]) =>
+            `  '${cat}': [\n` +
+            ids.map((id) => `    '${id}',`).join('\n') +
+            '\n  ],'
+        )
+        .join('\n') +
+      '\n}'
+    : '{}';
   const list = (ids: string[]) => {
     const sorted = [...ids].sort();
     return sorted.length
@@ -64,6 +84,32 @@ export const hiddenPlaceIds: string[] = [${list(hidden)}];
  */
 export const hiddenFeatureIds: string[] = [${list(hiddenFeatures)}];
 
+/**
+ * Card order within a category, keyed by category id.
+ *
+ * Only categories that have been reordered appear here; anything absent keeps
+ * the order it has in \`lib/activities.ts\` / \`lib/food.ts\`. A place missing
+ * from a listed category sorts to the end, so adding a new place never
+ * silently disappears into the middle of a list.
+ */
+export const placeOrder: Record<string, string[]> = ${orderLiteral};
+
+/** Applies the configured order to one category's places. */
+export function orderPlaces<T extends { id: string }>(
+  categoryId: string,
+  places: T[]
+): T[] {
+  const order = placeOrder[categoryId];
+  if (!order || order.length === 0) return places;
+  const rank = new Map(order.map((id, i) => [id, i]));
+  // Sort is stable, so unranked places keep their file order among themselves.
+  return [...places].sort(
+    (a, b) =>
+      (rank.get(a.id) ?? Number.MAX_SAFE_INTEGER) -
+      (rank.get(b.id) ?? Number.MAX_SAFE_INTEGER)
+  );
+}
+
 /** Whether a place should be rendered on the public site. */
 export function isVisible(id: string) {
   return !hiddenPlaceIds.includes(id);
@@ -81,17 +127,55 @@ export default function AdminPanel({
   features,
   hidden: initialHidden,
   hiddenFeatures: initialHiddenFeatures,
+  order: initialOrder,
 }: {
   sections: Section[];
   features: FeatureGroup[];
   hidden: string[];
   hiddenFeatures: string[];
+  order: Record<string, string[]>;
 }) {
   const [hidden, setHidden] = React.useState<string[]>(initialHidden);
   const [hiddenFeatures, setHiddenFeatures] = React.useState<string[]>(
     initialHiddenFeatures
   );
+  // Seeded from the file order so the arrows always have a list to move
+  // within, then narrowed back down to only the categories that differ.
+  const fileOrder = React.useMemo(() => {
+    const map: Record<string, string[]> = {};
+    sections.forEach((s2) =>
+      s2.categories.forEach((c) => {
+        map[c.id] = c.places.map((p) => p.id);
+      })
+    );
+    return map;
+  }, [sections]);
+
+  const [order, setOrder] = React.useState<Record<string, string[]>>(() => ({
+    ...fileOrder,
+    ...initialOrder,
+  }));
   const [copied, setCopied] = React.useState(false);
+
+  const move = (categoryId: string, id: string, delta: number) =>
+    setOrder((prev) => {
+      const list = [...(prev[categoryId] ?? [])];
+      const from = list.indexOf(id);
+      const to = from + delta;
+      if (from < 0 || to < 0 || to >= list.length) return prev;
+      list.splice(to, 0, list.splice(from, 1)[0]);
+      return { ...prev, [categoryId]: list };
+    });
+
+  // Only categories that actually differ from the file get written out.
+  const changedOrder = React.useMemo(() => {
+    const out: Record<string, string[]> = {};
+    for (const [cat, ids] of Object.entries(order)) {
+      if (JSON.stringify(ids) !== JSON.stringify(fileOrder[cat]))
+        out[cat] = ids;
+    }
+    return out;
+  }, [order, fileOrder]);
 
   const toggle = (id: string) =>
     setHidden((prev) =>
@@ -107,9 +191,10 @@ export default function AdminPanel({
     JSON.stringify([...a].sort()) === JSON.stringify([...b].sort());
   const dirty =
     !same(hidden, initialHidden) ||
-    !same(hiddenFeatures, initialHiddenFeatures);
+    !same(hiddenFeatures, initialHiddenFeatures) ||
+    JSON.stringify(changedOrder) !== JSON.stringify(initialOrder);
 
-  const file = configFile(hidden, hiddenFeatures);
+  const file = configFile(hidden, hiddenFeatures, changedOrder);
 
   const copy = async () => {
     try {
@@ -140,7 +225,8 @@ export default function AdminPanel({
         </Box>
       </Stack>
       <Typography color="text.secondary" sx={{ mb: 4 }}>
-        Switch a place off to take its tile off the public site.{' '}
+        Switch a place off to take its tile off the public site, or use the
+        arrows to reorder the cards.{' '}
         {hiddenCount === 0
           ? 'Everything is showing at the moment.'
           : `${hiddenCount} ${hiddenCount === 1 ? 'place is' : 'places are'} hidden.`}
@@ -177,41 +263,65 @@ export default function AdminPanel({
                 >
                   {category.title}
                 </Typography>
-                {category.places.map((place) => {
-                  const off = hidden.includes(place.id);
-                  return (
-                    <Stack
-                      key={place.id}
-                      direction="row"
-                      alignItems="center"
-                      spacing={2}
-                      sx={{ px: 3, py: 1.25 }}
-                    >
-                      <Box sx={{ flex: 1, minWidth: 0 }}>
-                        <Typography
-                          sx={{
-                            fontWeight: 500,
-                            color: off ? 'text.disabled' : 'text.primary',
-                            textDecoration: off ? 'line-through' : 'none',
+                {[...category.places]
+                  .sort(
+                    (a, b) =>
+                      (order[category.id] ?? []).indexOf(a.id) -
+                      (order[category.id] ?? []).indexOf(b.id)
+                  )
+                  .map((place, index, list) => {
+                    const off = hidden.includes(place.id);
+                    return (
+                      <Stack
+                        key={place.id}
+                        direction="row"
+                        alignItems="center"
+                        spacing={2}
+                        sx={{ px: 3, py: 1.25 }}
+                      >
+                        <Box sx={{ flex: 1, minWidth: 0 }}>
+                          <Typography
+                            sx={{
+                              fontWeight: 500,
+                              color: off ? 'text.disabled' : 'text.primary',
+                              textDecoration: off ? 'line-through' : 'none',
+                            }}
+                          >
+                            {place.name}
+                          </Typography>
+                          <Typography variant="caption" color="text.secondary">
+                            {place.note}
+                          </Typography>
+                        </Box>
+                        {off && <Chip label="Hidden" size="small" />}
+                        <Stack direction="row" spacing={0}>
+                          <IconButton
+                            size="small"
+                            disabled={index === 0}
+                            onClick={() => move(category.id, place.id, -1)}
+                            aria-label={`Move ${place.name} up`}
+                          >
+                            <ArrowUpIcon fontSize="small" />
+                          </IconButton>
+                          <IconButton
+                            size="small"
+                            disabled={index === list.length - 1}
+                            onClick={() => move(category.id, place.id, 1)}
+                            aria-label={`Move ${place.name} down`}
+                          >
+                            <ArrowDownIcon fontSize="small" />
+                          </IconButton>
+                        </Stack>
+                        <Switch
+                          checked={!off}
+                          onChange={() => toggle(place.id)}
+                          inputProps={{
+                            'aria-label': `Show ${place.name} on the public site`,
                           }}
-                        >
-                          {place.name}
-                        </Typography>
-                        <Typography variant="caption" color="text.secondary">
-                          {place.note}
-                        </Typography>
-                      </Box>
-                      {off && <Chip label="Hidden" size="small" />}
-                      <Switch
-                        checked={!off}
-                        onChange={() => toggle(place.id)}
-                        inputProps={{
-                          'aria-label': `Show ${place.name} on the public site`,
-                        }}
-                      />
-                    </Stack>
-                  );
-                })}
+                        />
+                      </Stack>
+                    );
+                  })}
               </Box>
             ))}
           </Surface>

@@ -3,7 +3,11 @@ import { Alert, Container } from '@mui/material';
 import { activityCategories } from '../lib/activities';
 import { foodCategories } from '../lib/food';
 import { bookingChannels } from '../lib/booking';
-import { hiddenFeatureIds, hiddenPlaceIds } from '../lib/visibility';
+import {
+  hiddenFeatureIds,
+  hiddenPlaceIds,
+  placeOrder,
+} from '../lib/visibility';
 import { isAuthenticated, isConfigured } from './auth';
 import SignInForm from './SignInForm';
 import AdminPanel from './AdminPanel';
@@ -83,6 +87,7 @@ export default async function AdminPage() {
       features={features}
       hidden={hiddenPlaceIds}
       hiddenFeatures={hiddenFeatureIds}
+      order={placeOrder}
     />
   );
 }

@@ -20,13 +20,19 @@ const ICONS: Record<string, React.ReactNode> = {
 };
 import PlaceCard from '../components/ui/PlaceCard';
 import { activityCategories } from '../lib/activities';
-import { isVisible } from '../lib/visibility';
+import { isVisible, orderPlaces } from '../lib/visibility';
 
 export default function ActivitiesContent() {
   // Hidden places drop out, and a category left with nothing drops out too
   // rather than rendering a heading over an empty grid.
   const categories = activityCategories
-    .map((c) => ({ ...c, places: c.places.filter((p) => isVisible(p.id)) }))
+    .map((c) => ({
+      ...c,
+      places: orderPlaces(
+        c.id,
+        c.places.filter((p) => isVisible(p.id))
+      ),
+    }))
     .filter((c) => c.places.length > 0);
 
   return (

@@ -24,6 +24,32 @@ export const hiddenFeatureIds: string[] = [
   'channel-booking-com',
 ];
 
+/**
+ * Card order within a category, keyed by category id.
+ *
+ * Only categories that have been reordered appear here; anything absent keeps
+ * the order it has in `lib/activities.ts` / `lib/food.ts`. A place missing
+ * from a listed category sorts to the end, so adding a new place never
+ * silently disappears into the middle of a list.
+ */
+export const placeOrder: Record<string, string[]> = {};
+
+/** Applies the configured order to one category's places. */
+export function orderPlaces<T extends { id: string }>(
+  categoryId: string,
+  places: T[]
+): T[] {
+  const order = placeOrder[categoryId];
+  if (!order || order.length === 0) return places;
+  const rank = new Map(order.map((id, i) => [id, i]));
+  // Sort is stable, so unranked places keep their file order among themselves.
+  return [...places].sort(
+    (a, b) =>
+      (rank.get(a.id) ?? Number.MAX_SAFE_INTEGER) -
+      (rank.get(b.id) ?? Number.MAX_SAFE_INTEGER)
+  );
+}
+
 /** Whether a place should be rendered on the public site. */
 export function isVisible(id: string) {
   return !hiddenPlaceIds.includes(id);

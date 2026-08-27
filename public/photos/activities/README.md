@@ -9,9 +9,10 @@ and sizing.
 
 ## Permission status
 
-`medieval-times.jpg`, `pirates-voyage.jpg` and `captain-hooks.jpg` were taken
-from the venues' own websites and are used pending permission. Requests are
-out to all three. If a venue supplies a credit line, add it to that place's
+`pirates-voyage.jpg` and `captain-hooks.jpg` were taken from the venues' own
+websites and are used pending permission. Requests are out to both.
+
+`medieval-times.jpg` is the owners' own photo, so it needs no permission. If a venue supplies a credit line, add it to that place's
 `image.credit` in `src/app/activities/ActivitiesContent.tsx`; if a venue
 declines, delete the file and drop the `image` field from its entry.
 
