@@ -216,6 +216,33 @@ a URL in `booking.ts`, and the switch on in the admin page. A channel that is
 off, or has no URL, also 404s at `/go/<channel>` rather than only being
 unlinked, so the link cannot be reached by guessing it.
 
+## The QR card in the condo
+
+There is a framed card in the condo with five QR codes on it. They were
+printed against an older set of paths, so `next.config.ts` redirects the
+printed URLs to where those pages actually live:
+
+| Printed on the card | Goes to       | Status                |
+| ------------------- | ------------- | --------------------- |
+| `/`                 | `/`           | still correct         |
+| `/activities`       | `/activities` | still correct         |
+| `/home-guide`       | `/guide`      | redirected            |
+| `/grocery`          | `/groceries`  | redirected            |
+| `/suggestions`      | `/about`      | redirected, see below |
+
+**Do not rename `/guide`, `/groceries`, `/activities` or `/about` without
+adding a redirect.** Guests are scanning that card right now and a reprint is
+slower than a deploy.
+
+`/suggestions` never existed on this site. The card labels it "SAY HEY!", so
+it currently lands on Your Hosts, which carries the contact wording. If a real
+feedback page is ever built, point the redirect at it, or drop the redirect.
+
+The codes point at `www.paradise252.com`, while `site.url` is the apex
+`paradise252.com`. Both have to resolve: add the domain **and** its `www`
+variant in Vercel so one redirects to the other, or every code on the card
+fails.
+
 ## SEO and analytics
 
 - `src/app/sitemap.ts` lists the seven content pages. `/booking`, `/go/*` and
