@@ -22,12 +22,8 @@ export const activityCategories: ActivityCategory[] = [
         address: 'Myrtle Beach Boardwalk, Myrtle Beach, SC',
         links: [
           {
-            text: 'Live cam: north end',
+            text: 'Live cam: volleyball south',
             url: 'https://www.earthcam.com/usa/southcarolina/myrtlebeach/',
-          },
-          {
-            text: 'Live cam: volleyball courts',
-            url: 'https://www.earthcam.com/usa/southcarolina/myrtlebeach/volleyball/',
           },
         ],
       },
