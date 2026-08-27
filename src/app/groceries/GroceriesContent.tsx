@@ -77,7 +77,7 @@ export default function GroceriesContent() {
                   >
                     {store.tag}
                   </Typography>
-                  <Typography variant="h4" gutterBottom>
+                  <Typography variant="h4" component="h2" gutterBottom>
                     {store.name}
                   </Typography>
                   <Typography variant="body1" color="text.secondary">

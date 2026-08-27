@@ -61,6 +61,7 @@ export default function ActivitiesContent() {
               </Stack>
               <Typography
                 variant="h4"
+                component="h2"
                 sx={{ mb: 1, fontSize: { xs: '1.6rem', md: '2rem' } }}
               >
                 {category.blurb}

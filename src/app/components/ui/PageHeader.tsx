@@ -63,6 +63,7 @@ export default function PageHeader({
         {lead && (
           <Typography
             variant="subtitle1"
+            component="p"
             color="text.secondary"
             sx={{
               mt: 2.5,

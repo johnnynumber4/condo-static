@@ -57,7 +57,7 @@ export default function AboutContent() {
           }}
         >
           <Box>
-            <Typography variant="h4" gutterBottom>
+            <Typography variant="h4" component="h2" gutterBottom>
               How the math works
             </Typography>
             <Stack spacing={2} sx={{ mt: 3 }}>
@@ -71,7 +71,7 @@ export default function AboutContent() {
           </Box>
 
           <Surface interactive={false}>
-            <Typography variant="h5" gutterBottom>
+            <Typography variant="h5" component="h2" gutterBottom>
               Staying with us
             </Typography>
             <Typography variant="body1" color="text.secondary" paragraph>
@@ -93,7 +93,12 @@ export default function AboutContent() {
         </Box>
 
         <Box sx={{ mt: { xs: 7, md: 10 }, maxWidth: 900, mx: 'auto' }}>
-          <Typography variant="h4" gutterBottom sx={{ textAlign: 'center' }}>
+          <Typography
+            variant="h4"
+            component="h2"
+            gutterBottom
+            sx={{ textAlign: 'center' }}
+          >
             Take the tour
           </Typography>
           <Typography

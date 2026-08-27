@@ -231,6 +231,7 @@ export default function Home() {
           </Typography>
           <Typography
             variant="h3"
+            component="h2"
             sx={{ fontSize: { xs: '1.9rem', md: '2.6rem' }, maxWidth: 620 }}
           >
             We are unit 252. Here is how that adds up.
@@ -256,7 +257,7 @@ export default function Home() {
                 >
                   {item.figure}
                 </Typography>
-                <Typography variant="h6" sx={{ mt: 1.5 }}>
+                <Typography variant="h6" component="h3" sx={{ mt: 1.5 }}>
                   {item.label}
                 </Typography>
                 <Typography
@@ -297,6 +298,7 @@ export default function Home() {
           </Typography>
           <Typography
             variant="h3"
+            component="h2"
             sx={{ fontSize: { xs: '1.9rem', md: '2.6rem' }, maxWidth: 620 }}
           >
             Everything you need for the week.
@@ -327,7 +329,9 @@ export default function Home() {
                 }}
               >
                 <Box sx={{ color: 'primary.main', mb: 2 }}>{section.icon}</Box>
-                <Typography variant="h6">{section.title}</Typography>
+                <Typography variant="h6" component="h3">
+                  {section.title}
+                </Typography>
                 <Typography
                   variant="body2"
                   color="text.secondary"

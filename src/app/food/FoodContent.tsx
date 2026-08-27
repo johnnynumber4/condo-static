@@ -56,6 +56,7 @@ export default function FoodContent() {
               </Stack>
               <Typography
                 variant="h4"
+                component="h2"
                 sx={{ mb: 1, fontSize: { xs: '1.6rem', md: '2rem' } }}
               >
                 {category.blurb}
@@ -91,7 +92,7 @@ export default function FoodContent() {
             borderLeftColor: 'secondary.main',
           }}
         >
-          <Typography variant="h6" gutterBottom>
+          <Typography variant="h6" component="h2" gutterBottom>
             A note on the buffets
           </Typography>
           <Typography variant="body1" color="text.secondary">

@@ -32,7 +32,7 @@ export default function Footer() {
           justifyContent="space-between"
         >
           <Box sx={{ maxWidth: 380 }}>
-            <Typography variant="h5" sx={{ mb: 1 }}>
+            <Typography variant="h5" component="p" sx={{ mb: 1 }}>
               {site.fullName}
             </Typography>
             <Typography variant="body2" color="text.secondary" sx={{ mb: 2.5 }}>
@@ -73,6 +73,18 @@ export default function Footer() {
                   {item.text}
                 </Typography>
               ))}
+              <Typography
+                component={Link}
+                href="/suggestions"
+                variant="body2"
+                sx={{
+                  textDecoration: 'none',
+                  color: 'text.secondary',
+                  '&:hover': { color: 'primary.main' },
+                }}
+              >
+                Guest Book
+              </Typography>
             </Stack>
           </Box>
 

@@ -83,7 +83,7 @@ export default function PlaceCard({ place }: { place: Place }) {
         >
           {place.note}
         </Typography>
-        <Typography variant="h5" gutterBottom>
+        <Typography variant="h5" component="h3" gutterBottom>
           {place.name}
         </Typography>
         <Typography variant="body1" color="text.secondary" sx={{ flex: 1 }}>

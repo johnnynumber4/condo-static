@@ -15,17 +15,15 @@ const nextConfig: NextConfig = {
    *   /activities  -> still correct
    *   /home-guide  -> renamed to /guide
    *   /grocery     -> renamed to /groceries
-   *   /suggestions -> never existed on this site
+   *   /suggestions -> now a real page, so no redirect for it
    *
-   * Deliberately temporary (307) rather than permanent. A permanent redirect
-   * is cached hard by browsers, which would be painful the day /suggestions
-   * becomes a real page.
+   * Deliberately temporary (307) rather than permanent, so a browser does
+   * not cache them forever if a path is ever reclaimed.
    */
   redirects: async () => {
     return [
       { source: '/home-guide', destination: '/guide', permanent: false },
       { source: '/grocery', destination: '/groceries', permanent: false },
-      { source: '/suggestions', destination: '/about', permanent: false },
     ];
   },
 

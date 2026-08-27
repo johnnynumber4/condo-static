@@ -234,9 +234,18 @@ printed URLs to where those pages actually live:
 adding a redirect.** Guests are scanning that card right now and a reprint is
 slower than a deploy.
 
-`/suggestions` never existed on this site. The card labels it "SAY HEY!", so
-it currently lands on Your Hosts, which carries the contact wording. If a real
-feedback page is ever built, point the redirect at it, or drop the redirect.
+`/suggestions` is the guest book. It is a placeholder: it explains that notes
+cannot be left yet and asks guests to use the contact details from their
+check-in message. There is no form, on purpose, because a form that looked
+like it worked and dropped the note would be worse than saying so.
+
+Entries live in `src/app/lib/guestbook.ts` and can be added by hand today.
+When it moves to MongoDB, keep the `GuestbookEntry` shape and change only
+where the array comes from, so the page itself does not need touching.
+
+The page is deliberately not in the main nav, only in the footer and on the
+QR card, so it is listed explicitly in the sitemap rather than derived from
+`navItems`.
 
 The codes point at `www.paradise252.com`, while `site.url` is the apex
 `paradise252.com`. Both have to resolve: add the domain **and** its `www`

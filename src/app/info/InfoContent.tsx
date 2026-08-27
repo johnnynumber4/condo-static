@@ -97,7 +97,9 @@ export default function InfoContent() {
                   {rule.icon}
                 </Box>
                 <Box>
-                  <Typography variant="h6">{rule.title}</Typography>
+                  <Typography variant="h6" component="h2">
+                    {rule.title}
+                  </Typography>
                   <Typography
                     variant="body1"
                     color="text.secondary"

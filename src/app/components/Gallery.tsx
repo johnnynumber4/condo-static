@@ -98,6 +98,7 @@ export default function Gallery() {
         </Typography>
         <Typography
           variant="h3"
+          component="h2"
           sx={{ fontSize: { xs: '1.9rem', md: '2.6rem' }, maxWidth: 620 }}
         >
           The view we keep coming back for.

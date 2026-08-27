@@ -89,7 +89,7 @@ export default function GuideContent() {
           <Stack direction="row" spacing={2}>
             <InfoIcon sx={{ color: 'secondary.main', mt: '2px' }} />
             <Box>
-              <Typography variant="h6" gutterBottom>
+              <Typography variant="h6" component="h2" gutterBottom>
                 Address and codes
               </Typography>
               <Typography variant="body1" color="text.secondary">
@@ -140,7 +140,7 @@ export default function GuideContent() {
                   {section.icon}
                   <Typography variant="overline">Step {index + 1}</Typography>
                 </Stack>
-                <Typography variant="h4" gutterBottom>
+                <Typography variant="h4" component="h2" gutterBottom>
                   {section.title}
                 </Typography>
                 <Box sx={{ color: 'text.secondary', mt: 2 }}>
