@@ -59,7 +59,7 @@ const sections = [
     href: '/food',
     icon: <RestaurantIcon />,
     title: 'Eat & Drink',
-    body: 'Seafood buffets, the walkable Austrian place, and the breweries.',
+    body: 'Seafood buffets, the Boardwalk rooftops, and the breweries.',
   },
   {
     href: '/groceries',

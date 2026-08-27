@@ -140,6 +140,36 @@ export const foodCategories: FoodCategory[] = [
     ],
   },
   {
+    id: 'boardwalk',
+    title: 'On the Boardwalk',
+    blurb: 'Two oceanfront rooms with live music, both a short walk south.',
+    places: [
+      {
+        id: 'tin-roof',
+        name: 'Tin Roof',
+        note: 'Three blocks south \u00b7 walkable',
+        description:
+          'Third floor of the BLVD building, looking straight out over the Boardwalk and the ocean. Live music almost every night: acoustic sets over dinner, then local and touring bands later, with a DJ on the rooftop patio at the weekend. Bar food done properly, and the closest place to the condo for a night out that does not need the car.',
+        address: '1410 N Ocean Blvd, Myrtle Beach, SC 29577',
+        links: [
+          {
+            text: 'Music calendar',
+            url: 'https://tinroofmyrtlebeach.com/live-music-events/',
+          },
+        ],
+      },
+      {
+        id: 'riptydz-oceanfront-grille',
+        name: 'RipTydz Oceanfront Grille & Rooftop Bar',
+        note: 'Five blocks south \u00b7 walkable',
+        description:
+          'Three floors and 500 seats on the Boardwalk, topped by a rooftop bar with the best view on this stretch of beach. Raw bar, lobster rolls, Dungeness crab and prime steaks, plus live music and a DJ. Go up for sunset even if you only want a drink.',
+        address: '1210 N Ocean Blvd, Myrtle Beach, SC 29577',
+        links: [{ text: 'Menus and hours', url: 'https://riptydz.com/' }],
+      },
+    ],
+  },
+  {
     id: 'breweries',
     title: 'Breweries',
     blurb: 'The local beer scene is better than the beach-town reputation.',
