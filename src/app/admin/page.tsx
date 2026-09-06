@@ -11,6 +11,9 @@ import {
 import { isAuthenticated, isConfigured } from './auth';
 import SignInForm from './SignInForm';
 import AdminPanel from './AdminPanel';
+import GuestbookModeration from './GuestbookModeration';
+import { getEntriesForReview } from '../lib/guestbook-db';
+import { isDatabaseConfigured } from '../lib/mongodb';
 
 // Never prerendered, never indexed, and never listed in the nav.
 export const dynamic = 'force-dynamic';
@@ -81,13 +84,33 @@ export default async function AdminPage() {
     },
   ];
 
+  // The guest book reads a live database, unlike everything above it. A
+  // database that is down should cost this one section, not the whole page.
+  const configured = isDatabaseConfigured();
+  let entries: Awaited<ReturnType<typeof getEntriesForReview>> = [];
+  let guestbookError: string | undefined;
+  if (configured) {
+    try {
+      entries = await getEntriesForReview();
+    } catch (err) {
+      guestbookError = err instanceof Error ? err.message : String(err);
+    }
+  }
+
   return (
-    <AdminPanel
-      sections={sections}
-      features={features}
-      hidden={hiddenPlaceIds}
-      hiddenFeatures={hiddenFeatureIds}
-      order={placeOrder}
-    />
+    <>
+      <AdminPanel
+        sections={sections}
+        features={features}
+        hidden={hiddenPlaceIds}
+        hiddenFeatures={hiddenFeatureIds}
+        order={placeOrder}
+      />
+      <GuestbookModeration
+        entries={entries}
+        configured={configured}
+        error={guestbookError}
+      />
+    </>
   );
 }

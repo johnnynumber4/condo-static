@@ -17,9 +17,11 @@
     "@mui/icons-material": "^6.4.5",
     "@mui/material": "^6.4.5",
     "@vercel/analytics": "^2.0.1",
+    "mongodb": "^7.6.0",
     "next": "15.5.23",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "server-only": "^0.0.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -37,6 +39,7 @@
   "pnpm": {
     "overrides": {
       "@babel/runtime@7": "^7.29.7",
+      "@humanfs/node": "^0.16.8",
       "@eslint/plugin-kit": "^0.3.5",
       "ajv@6": "^6.15.0",
       "brace-expansion@1": "^1.1.18",

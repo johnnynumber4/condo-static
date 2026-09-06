@@ -6,9 +6,16 @@ import ConstructionIcon from '@mui/icons-material/ConstructionOutlined';
 import PageHeader from '../components/ui/PageHeader';
 import Surface from '../components/ui/Surface';
 import { shortLandscape } from '../lib/theme';
-import { guestbookEntries } from '../lib/guestbook';
+import type { GuestbookEntry } from '../lib/guestbook';
+import GuestbookForm from './GuestbookForm';
 
-export default function SuggestionsContent() {
+export default function SuggestionsContent({
+  entries,
+  writable,
+}: {
+  entries: GuestbookEntry[];
+  writable: boolean;
+}) {
   return (
     <>
       <PageHeader
@@ -22,30 +29,33 @@ export default function SuggestionsContent() {
         maxWidth="md"
         sx={{ py: { xs: 6, md: 9 }, [shortLandscape]: { py: 4 } }}
       >
-        {/* Honest about the state of it. A form that looked like it worked and
-            quietly threw the note away would be worse than saying this. */}
-        <Surface
-          interactive={false}
-          sx={{ borderLeft: '4px solid', borderLeftColor: 'secondary.main' }}
-        >
-          <Stack direction="row" spacing={2} alignItems="flex-start">
-            <ConstructionIcon sx={{ color: 'secondary.main', mt: '2px' }} />
-            <Box>
-              <Typography variant="h6" component="h2" gutterBottom>
-                Not quite open yet
-              </Typography>
-              <Typography variant="body1" color="text.secondary">
-                We are still building the part that lets you leave a note here.
-                Until it is ready, use the contact details from your check-in
-                message and we will add your note ourselves. We would rather
-                tell you that than give you a box that quietly loses what you
-                wrote.
-              </Typography>
-            </Box>
-          </Stack>
-        </Surface>
+        {writable ? (
+          <GuestbookForm />
+        ) : (
+          /* Honest about the state of it. A form that looked like it worked
+             and quietly threw the note away would be worse than saying this. */
+          <Surface
+            interactive={false}
+            sx={{ borderLeft: '4px solid', borderLeftColor: 'secondary.main' }}
+          >
+            <Stack direction="row" spacing={2} alignItems="flex-start">
+              <ConstructionIcon sx={{ color: 'secondary.main', mt: '2px' }} />
+              <Box>
+                <Typography variant="h6" component="h2" gutterBottom>
+                  Not taking notes right now
+                </Typography>
+                <Typography variant="body1" color="text.secondary">
+                  The part that lets you leave a note is having a moment. Use
+                  the contact details from your check-in message and we will add
+                  your note ourselves. We would rather tell you that than give
+                  you a box that quietly loses what you wrote.
+                </Typography>
+              </Box>
+            </Stack>
+          </Surface>
+        )}
 
-        {guestbookEntries.length > 0 && (
+        {entries.length > 0 && (
           <Box sx={{ mt: { xs: 5, md: 7 } }}>
             <Stack
               direction="row"
@@ -57,12 +67,12 @@ export default function SuggestionsContent() {
               <Typography variant="overline">From past guests</Typography>
             </Stack>
             <Stack spacing={2.5}>
-              {guestbookEntries.map((entry) => (
+              {entries.map((entry) => (
                 <Surface key={entry.id} interactive={false} component="figure">
                   <Typography
                     variant="body1"
                     component="blockquote"
-                    sx={{ m: 0, fontSize: '1.1rem' }}
+                    sx={{ m: 0, fontSize: '1.1rem', whiteSpace: 'pre-line' }}
                   >
                     {entry.note}
                   </Typography>

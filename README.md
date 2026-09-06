@@ -13,6 +13,10 @@ pnpm install
 pnpm dev          # http://localhost:3000
 ```
 
+Copy `.env.example` to `.env.local` if you want the `/admin` page or the guest
+book to work locally. Both are optional: without them those features tell you
+they are switched off rather than breaking.
+
 Other scripts:
 
 ```bash
@@ -234,14 +238,8 @@ printed URLs to where those pages actually live:
 adding a redirect.** Guests are scanning that card right now and a reprint is
 slower than a deploy.
 
-`/suggestions` is the guest book. It is a placeholder: it explains that notes
-cannot be left yet and asks guests to use the contact details from their
-check-in message. There is no form, on purpose, because a form that looked
-like it worked and dropped the note would be worse than saying so.
-
-Entries live in `src/app/lib/guestbook.ts` and can be added by hand today.
-When it moves to MongoDB, keep the `GuestbookEntry` shape and change only
-where the array comes from, so the page itself does not need touching.
+`/suggestions` is the guest book, and it is backed by MongoDB. See
+[The guest book](#the-guest-book) below.
 
 The page is deliberately not in the main nav, only in the footer and on the
 QR card, so it is listed explicitly in the sitemap rather than derived from
@@ -251,6 +249,78 @@ The codes point at `www.paradise252.com`, while `site.url` is the apex
 `paradise252.com`. Both have to resolve: add the domain **and** its `www`
 variant in Vercel so one redirects to the other, or every code on the card
 fails.
+
+## The guest book
+
+`/suggestions` lets guests leave a note, and shows the ones we have published.
+It reads and writes MongoDB.
+
+### Turning it on
+
+Set `MONGODB_URI` in the Vercel project settings to an Atlas connection
+string. `MONGODB_DB` is optional and defaults to `paradise252`. `.env.example`
+lists both; copy it to `.env.local` to run against a database locally.
+
+Until `MONGODB_URI` is set the page says it is not taking notes and shows no
+form, because a form that looked like it worked and dropped the note would be
+worse than saying so. The same happens if the database is unreachable: the
+page still renders, with whatever curated entries are in git.
+
+There is nothing to create by hand. The collection is `guestbook`, and its
+two indexes are created on first use.
+
+### Nothing goes live on its own
+
+Every submitted note arrives unapproved and is invisible to guests until you
+publish it from `/admin`. A public guest book with no gate in front of it
+becomes a link farm within a week.
+
+The Guest book section at the bottom of `/admin` lists what is waiting and
+what is live, with Publish, Hide and Delete on each. **Unlike the switches
+above it, these buttons change the live site immediately** — there is no file
+to copy and commit, and a delete cannot be undone.
+
+Notes we were given some other way (a text message, the check-in thread) go in
+`curatedEntries` in `src/app/lib/guestbook.ts`. Those are always live, need no
+database, and survive it being down. They cannot be moderated from `/admin`;
+edit that file and commit.
+
+### How the abuse handling works
+
+- Nothing is published without a person approving it, as above.
+- A hidden honeypot field no guest can see, tab to, or hear in a screen
+  reader. Anything that fills it gets a thank-you page and nothing is written.
+- Three notes an hour per address. The address is stored only as a salted
+  SHA-256 hash, never in the clear, because it is only ever compared to
+  another hash.
+- Length caps on all three fields, in `LIMITS`.
+
+### Where the code lives
+
+| File                                 | What it is                                            |
+| ------------------------------------ | ----------------------------------------------------- |
+| `src/app/lib/mongodb.ts`             | The shared client, and the circuit breaker below      |
+| `src/app/lib/guestbook.ts`           | Types, `LIMITS`, `curatedEntries`. No database import |
+| `src/app/lib/guestbook-db.ts`        | Every read and write. `server-only`                   |
+| `src/app/suggestions/actions.ts`     | The submit action, honeypot and address hashing       |
+| `src/app/admin/guestbook-actions.ts` | Publish, hide, delete. Each re-checks the session     |
+
+Two things about that split are load-bearing:
+
+- **`guestbook.ts` must not import the driver.** The form is a client
+  component and needs `LIMITS`; an import chain from it to `mongodb` would put
+  the whole driver in the browser bundle. `guestbook-db.ts` imports
+  `server-only` so that mistake fails the build instead of shipping.
+- **Every action in `guestbook-actions.ts` calls `isAuthenticated()` itself.**
+  A server action is a public endpoint that anyone can post to; that the admin
+  page only renders the button for a signed-in owner protects nothing.
+
+One connection is shared per server instance and cached across hot reloads,
+so a burst of requests does not open a pool each. If a connection fails the
+client is not cached, but the failure time is: for the next 30 seconds
+requests fail immediately rather than each waiting out the five second
+connection timeout, and after that one tries again. That is what stops a
+database outage turning every page load into a five second stall.
 
 ## SEO and analytics
 

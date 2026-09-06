@@ -5,6 +5,14 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true, // Required for static export
   },
+
+  /**
+   * The MongoDB driver loads optional native add-ons (kerberos, client-side
+   * encryption) by require() at runtime. Bundling it would either pull those
+   * in or fail resolving them, so it stays external and is required from
+   * node_modules on the server.
+   */
+  serverExternalPackages: ['mongodb'],
   /**
    * The QR codes on the framed card in the condo were printed against an
    * older set of paths. Guests are scanning them right now, so the site
