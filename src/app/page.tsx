@@ -24,24 +24,6 @@ const extraChannels = bookingChannels.filter(
   (c) => c.id !== 'hosteeva' && c.url && isFeatureVisible(`channel-${c.id}`)
 );
 
-const paradiseMath = [
-  {
-    figure: '2',
-    label: 'Great rooms',
-    body: 'Both with direct ocean views and a balcony of their own.',
-  },
-  {
-    figure: '5',
-    label: 'Ways to swim',
-    body: 'Indoor pool, jacuzzi, kiddie pool, lazy river, and the Atlantic.',
-  },
-  {
-    figure: '2',
-    label: 'Minute walk',
-    body: 'Shops, restaurants and the boardwalk are right outside.',
-  },
-];
-
 const sections = [
   {
     href: '/guide',
@@ -142,9 +124,8 @@ export default function Home() {
               [shortLandscape]: { mt: 1.5, fontSize: '0.98rem' },
             }}
           >
-            Two bedrooms, two balconies, five ways to swim and a two-minute walk
-            to the boardwalk. We are unit 252, but we think 2 + 5 + 2 =
-            paradise.
+            The sliding door opens onto the Atlantic. The pools, the boardwalk
+            and dinner are all a short walk from it.
           </Typography>
           <Stack
             direction={{ xs: 'column', sm: 'row' }}
@@ -213,62 +194,6 @@ export default function Home() {
                 sx={{ fontSize: 17, verticalAlign: '-3px', ml: 0.5 }}
               />
             </Box>
-          </Box>
-        </Container>
-      </Box>
-
-      {/* ------------------------------------------------------- 2 + 5 + 2 math */}
-      <Box
-        component="section"
-        sx={{ py: { xs: 7, md: 10 }, [shortLandscape]: { py: 4.5 } }}
-      >
-        <Container maxWidth="lg">
-          <Typography
-            variant="overline"
-            sx={{ color: 'primary.main', display: 'block', mb: 1.5 }}
-          >
-            The Paradise math
-          </Typography>
-          <Typography
-            variant="h3"
-            component="h2"
-            sx={{ fontSize: { xs: '1.9rem', md: '2.6rem' }, maxWidth: 620 }}
-          >
-            We are unit 252. Here is how that adds up.
-          </Typography>
-
-          <Box
-            sx={{
-              mt: { xs: 4, md: 6 },
-              display: 'grid',
-              gap: 3,
-              gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' },
-            }}
-          >
-            {paradiseMath.map((item) => (
-              <Surface key={item.label} interactive={false}>
-                <Typography
-                  sx={{
-                    fontFamily: 'var(--font-display), serif',
-                    fontSize: '3.5rem',
-                    lineHeight: 1,
-                    color: 'secondary.main',
-                  }}
-                >
-                  {item.figure}
-                </Typography>
-                <Typography variant="h6" component="h3" sx={{ mt: 1.5 }}>
-                  {item.label}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  sx={{ mt: 1 }}
-                >
-                  {item.body}
-                </Typography>
-              </Surface>
-            ))}
           </Box>
         </Container>
       </Box>

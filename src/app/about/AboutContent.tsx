@@ -1,8 +1,7 @@
 'use client';
 import * as React from 'react';
 import Image from 'next/image';
-import { Box, Button, Container, Stack, Typography } from '@mui/material';
-import CheckIcon from '@mui/icons-material/CheckCircleOutline';
+import { Box, Button, Container, Typography } from '@mui/material';
 import PageHeader from '../components/ui/PageHeader';
 import { shortLandscape } from '../lib/theme';
 import Surface from '../components/ui/Surface';
@@ -10,10 +9,25 @@ import VideoEmbed from '../components/ui/VideoEmbed';
 import { BOOKING_URL_TRACKED } from '../lib/site';
 import { heroPhoto } from '../lib/gallery';
 
-const highlights = [
-  '2 great rooms, each with a direct ocean view and its own balcony',
-  '5 ways to swim: indoor pool, jacuzzi, kiddie pool, lazy river and the ocean',
-  '2 minute walk to shops, restaurants and the boardwalk',
+/** The 2 + 5 + 2 of the page title, spelled out. This used to open the home
+ *  page, but it is really the hosts introducing the place, so it lives here
+ *  with the rest of that introduction. */
+const paradiseMath = [
+  {
+    figure: '2',
+    label: 'Great rooms',
+    body: 'Both with direct ocean views and a balcony of their own.',
+  },
+  {
+    figure: '5',
+    label: 'Ways to swim',
+    body: 'Indoor pool, jacuzzi, kiddie pool, lazy river, and the Atlantic.',
+  },
+  {
+    figure: '2',
+    label: 'Minute walk',
+    body: 'Shops, restaurants and the boardwalk are right outside.',
+  },
 ];
 
 export default function AboutContent() {
@@ -48,28 +62,55 @@ export default function AboutContent() {
           />
         </Box>
 
-        <Box
-          sx={{
-            display: 'grid',
-            gap: { xs: 4, md: 6 },
-            gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
-            alignItems: 'start',
-          }}
-        >
-          <Box>
-            <Typography variant="h4" component="h2" gutterBottom>
-              How the math works
-            </Typography>
-            <Stack spacing={2} sx={{ mt: 3 }}>
-              {highlights.map((line) => (
-                <Stack key={line} direction="row" spacing={1.75}>
-                  <CheckIcon sx={{ color: 'primary.main', mt: '3px' }} />
-                  <Typography variant="body1">{line}</Typography>
-                </Stack>
-              ))}
-            </Stack>
-          </Box>
+        <Box component="section">
+          <Typography
+            variant="overline"
+            sx={{ color: 'primary.main', display: 'block', mb: 1.5 }}
+          >
+            The Paradise math
+          </Typography>
+          <Typography variant="h4" component="h2">
+            Here is how that adds up.
+          </Typography>
 
+          <Box
+            sx={{
+              mt: { xs: 4, md: 5 },
+              display: 'grid',
+              gap: 3,
+              gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' },
+            }}
+          >
+            {paradiseMath.map((item) => (
+              <Surface key={item.label} interactive={false}>
+                <Typography
+                  sx={{
+                    fontFamily: 'var(--font-display), serif',
+                    fontSize: '3.5rem',
+                    lineHeight: 1,
+                    color: 'secondary.main',
+                  }}
+                >
+                  {item.figure}
+                </Typography>
+                <Typography variant="h6" component="h3" sx={{ mt: 1.5 }}>
+                  {item.label}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{ mt: 1 }}
+                >
+                  {item.body}
+                </Typography>
+              </Surface>
+            ))}
+          </Box>
+        </Box>
+
+        {/* Held to a readable width: stretched across the whole lg
+            container this card reads as a banner, not a note. */}
+        <Box sx={{ mt: { xs: 5, md: 8 }, maxWidth: 720 }}>
           <Surface interactive={false}>
             <Typography variant="h5" component="h2" gutterBottom>
               Staying with us
