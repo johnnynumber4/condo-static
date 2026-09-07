@@ -1,12 +1,12 @@
 {
   "name": "Paradise 252 @ Atlantica II",
   "short_name": "Paradise 252",
-  "description": "Your home away from home in Myrtle Beach",
+  "description": "Guest manual and booking for our oceanfront condo at Atlantica II, Myrtle Beach.",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#ffffff",
-  "theme_color": "#1e88e5",
+  "background_color": "#F7F3EC",
+  "theme_color": "#0E6B70",
   "scope": "/",
   "icons": [
     {
@@ -23,14 +23,24 @@
   ],
   "shortcuts": [
     {
-      "name": "About",
-      "url": "/about",
-      "description": "Learn about our condo"
+      "name": "Condo Guide",
+      "url": "/guide",
+      "description": "Getting in and settling down"
     },
     {
-      "name": "Book Now",
-      "url": "https://www.hosteeva.com/properties/available/details/12926-hosteeva-oceanfront-sunny-condo-w-pool-in-atlantica-towers-condo",
-      "description": "Book your stay"
+      "name": "Eat & Drink",
+      "url": "/food",
+      "description": "Where to eat nearby"
+    },
+    {
+      "name": "Activities",
+      "url": "/activities",
+      "description": "Things to do nearby"
+    },
+    {
+      "name": "House Rules",
+      "url": "/info",
+      "description": "What to know before you settle in"
     }
   ]
-} 
+}
