@@ -13,7 +13,7 @@ interface BeforeInstallPromptEvent extends Event {
 
 /**
  * Offers the "add to home screen" prompt so guests can keep the manual on
- * their phone for the week.
+ * their phone for the whole stay.
  */
 export default function InstallPWA() {
   const [prompt, setPrompt] = React.useState<BeforeInstallPromptEvent | null>(

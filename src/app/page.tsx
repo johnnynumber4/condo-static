@@ -226,7 +226,7 @@ export default function Home() {
             component="h2"
             sx={{ fontSize: { xs: '1.9rem', md: '2.6rem' }, maxWidth: 620 }}
           >
-            Everything you need for the week.
+            Everything you need for your stay.
           </Typography>
 
           <Box

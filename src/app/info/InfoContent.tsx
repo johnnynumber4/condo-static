@@ -69,7 +69,7 @@ export default function InfoContent() {
     <>
       <PageHeader
         eyebrow="House rules"
-        title="A short list, so the week goes smoothly."
+        title="A short list, so your stay goes smoothly."
         maxWidth="md"
         lead="Nothing here is a surprise, but a few of these carry fines from the building, so they are worth two minutes of your time."
       />
